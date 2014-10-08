@@ -1,0 +1,20 @@
+﻿extends ../layout
+
+block content
+  div
+    form(method='POST' action='/bands/add/') Добавить группу
+      br
+      b Название
+      br
+      input(type='text' name ='band_name')
+      br
+      b Страна
+      br
+      input(type='text' name ='band_state')
+      br
+      b Состав
+      br
+      textarea(name ='band_members')
+      br
+      input(type='submit')
+  a(href='/bands/') Назад

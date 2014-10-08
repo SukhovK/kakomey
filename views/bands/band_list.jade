@@ -1,0 +1,17 @@
+﻿extends ../layout
+
+block content
+  h5= title
+
+  ul
+    - for (var b in bandsList)
+      li
+        a(href='/bands/'+bandsList[b].bid)
+          i.glyphicon.glyphicon-music &nbsp;
+          =bandsList[b].name
+        &nbsp; 
+        a(href='/bands/del/'+bandsList[b].bid) x
+        &nbsp; 
+        a(href='/bands/edit/'+bandsList[b].bid) e
+          
+  a(href='/bands/add') Добавить группу

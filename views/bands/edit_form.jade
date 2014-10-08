@@ -1,0 +1,22 @@
+﻿extends layout
+
+block content
+  div
+    form(method='POST'  action='/bands/edit/')
+      input(type='hidden' name ='_method' value='put')
+      input(type='hidden' name ='bid' value=band.bid)
+      br
+      b Назпвание
+      br
+      input(type='text' name ='name' value=band.name)
+      br
+      b Страна
+      br
+      input(type='text' name ='state' value=band.state)
+      br
+      b Состав
+      br
+      textarea(name ='members')=members
+      br
+      input(type='submit')
+  a(href='/bands/') Назад

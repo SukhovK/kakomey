@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+  h2= title
+  h1  #{band.name}
+    i  (#{band.state})
+  each m in band.members
+    li
+      a(href='/bands/'+m.mid) m.name

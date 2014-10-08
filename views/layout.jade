@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+    script(src='http://code.jquery.com/jquery-latest.js')
+    script(src='/javascripts/bootstrap.js')
+  body
+    div.row
+      div.col-md-4
+        img.img-circle(src="/images/bands.jpg", width="180px")
+      div.col-md-8 
+        h1 Kakomay!
+    div.row
+      div.col-md-10
+        block content
