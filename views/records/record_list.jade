@@ -2,22 +2,22 @@
 
 block content
   h3= title
-
   ul.nav.nav-list
-    - for (var b in bandsList)
+    - for (var r in recordsList)
       li
         div.row
           div.col-md-4
-            a(href='/bands/'+bandsList[b].bid)
+            a(href='/records/'+r.rid)
               i.glyphicon.glyphicon-music &nbsp;
-              =bandsList[b].name
+              =recordsList[r].title+" ("+recordsList[r].group+") "+recordsList[r].year
           div.col-md-1
-            a(href='/bands/edit/'+bandsList[b].bid)
+            a(href='/records/edit/'+recordsList[r].rid)
               i.glyphicon.glyphicon-edit
               &nbsp;
               &nbsp;
-            a(href='/bands/del/'+bandsList[b].bid)
+            a(href='/records/del/'+recordsList[r].rid)
               i.glyphicon.glyphicon-remove.mint
           
-  a(href='/bands/add')
+  a(href='/records/add')
     i.glyphicon.glyphicon-plus
+	

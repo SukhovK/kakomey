@@ -4,20 +4,20 @@ block content
   h3= title
 
   ul.nav.nav-list
-    - for (var b in bandsList)
+    - for (var m in musicianList)
       li
         div.row
           div.col-md-4
-            a(href='/bands/'+bandsList[b].bid)
+            a(href='/musicians/'+musicianList[m].aid)
               i.glyphicon.glyphicon-music &nbsp;
-              =bandsList[b].name
+              =musicianList[m].name
           div.col-md-1
-            a(href='/bands/edit/'+bandsList[b].bid)
+            a(href='/musicians/edit/'+musicianList[m].aid)
               i.glyphicon.glyphicon-edit
               &nbsp;
               &nbsp;
-            a(href='/bands/del/'+bandsList[b].bid)
+            a(href='/bamusiciansnds/del/'+musicianList[m].aid)
               i.glyphicon.glyphicon-remove.mint
           
-  a(href='/bands/add')
+  a(href='/musicians/add')
     i.glyphicon.glyphicon-plus

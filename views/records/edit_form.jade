@@ -1,0 +1,52 @@
+﻿extends ../layout
+
+block content
+  div.row
+    div.col-md-6
+      form(method='POST'  action='/records/edit/' enctype="multipart/form-data")
+        input(type='hidden' name ='_method' value='put')
+        input(type='hidden' name ='rid' value=record.rid)
+        br
+        b Название
+        br
+        input.form-control(type='text' name ='title' value=record.title)
+        br
+        b Группа
+        br
+        input.form-control(type='text' name ='group' value=record.group)
+        br
+        b Состав
+        br
+        b Год
+        br
+        input.form-control(type='text' name ='year' value=record.year)=members
+        br
+        b Обзор
+        br
+        textarea.form-control(name ='review', row=20)=record.review
+        br
+        input.btn.btn-success(type='submit')
+    div.col-md-4
+      form.control-group(method='POST'  action='/records/setPic/' enctype="multipart/form-data")
+        input(type='hidden' name ='_method' value='put')
+        input(type='hidden' name ='rid' value=record.rid)
+        br
+        b Фото
+        br
+        img(src='/images/main/'+record.mainImage, width='120px')
+        br
+        input(type='file' name ='cover')=members
+        br
+        input(type='submit')
+      form(method='POST'  action='/records/setPic/' enctype="multipart/form-data")
+        input(type='hidden' name ='_method' value='put')
+        input(type='hidden' name ='rid' value=record.rid)
+        br
+        each m in record.members
+          li.form-control=a.name
+            div.row
+        div.col-md-4
+          input(type='text', name='title')
+          input.input-small(type='text', name='year')
+        input(type='submit')
+  a(href='/bands/') Назад

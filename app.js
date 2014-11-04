@@ -1,7 +1,6 @@
 ﻿var express = require('express');
 var stylus = require('stylus');
 var lessMiddleware = require('less-middleware');
-//var routes = require('./routes');
 var map = require('./approutes');
 
 var app = express();
@@ -14,7 +13,7 @@ app.configure(function(){
     app.set('view options', { layout: true });
     app.set('views', __dirname + '/views');	
     app.use(express.favicon());
-	app.use(express.logger());
+	//app.use(express.logger());
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(app.router);
@@ -38,7 +37,7 @@ app.configure('development', function(){
     app.use(express.errorHandler());
 });
 
-var prefixes = ['bands'];
+var prefixes = ['bands','musicians','records'];
 // map route to controller
 prefixes.forEach(function(prefix) {
     map.route(app, prefix);

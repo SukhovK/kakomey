@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h2  #{band.name}
+      i  (#{band.state})
+  div.row
+    div.col-md-6 
+      img(src="/images/main/"+band.mainImage, width="180px")
+      #{band.short}
+    div.col-md-4
+      each m in band.members
+        li
+          a(href='/bands/')=m.name
+  div.row
+    div.col-md-6 #{band.short) #{band.history)

@@ -1,0 +1,24 @@
+﻿extends ../layout
+
+block content
+  div.row
+    div.col-md-6
+      form(method='POST'  action='/musicians/edit/' enctype="multipart/form-data")
+        input(type='hidden' name ='_method' value='put')
+        input(type='hidden' name ='aid' value=musician.aid)
+        br
+        b Имя
+        br
+        input.form-control(type='text' name ='name' value=musician.name)
+        br
+        b Имя для сортировки
+        br
+        input.form-control(type='text' name ='sortName' value=musician.sortName)
+        br
+        b Биография
+        br
+        textarea.form-control(name ='history', row=20)=musician.bio
+        br
+        input.btn.btn-success(type='submit')
+    div.col-md-4
+  a(href='/musicians/') Назад

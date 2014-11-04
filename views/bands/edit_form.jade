@@ -1,22 +1,54 @@
-﻿extends layout
+﻿extends ../layout
 
 block content
-  div
-    form(method='POST'  action='/bands/edit/')
-      input(type='hidden' name ='_method' value='put')
-      input(type='hidden' name ='bid' value=band.bid)
-      br
-      b Назпвание
-      br
-      input(type='text' name ='name' value=band.name)
-      br
-      b Страна
-      br
-      input(type='text' name ='state' value=band.state)
-      br
-      b Состав
-      br
-      textarea(name ='members')=members
-      br
-      input(type='submit')
+  div.row
+    div.col-md-6
+      form(method='POST'  action='/bands/edit/' enctype="multipart/form-data")
+        input(type='hidden' name ='_method' value='put')
+        input(type='hidden' name ='bid' value=band.bid)
+        br
+        b Название
+        br
+        input.form-control(type='text' name ='name' value=band.name)
+        br
+        b Страна
+        br
+        input.form-control(type='text' name ='state' value=band.state)
+        br
+        b Состав
+        br
+        textarea.form-control(name ='members', col='80')=members
+        br
+        b Описание
+        br
+        textarea.form-control(name ='short')=band.short
+        br
+        b История
+        br
+        textarea.form-control(name ='history', row=20)=band.history
+        br
+        input.btn.btn-success(type='submit')
+    div.col-md-4
+      form.control-group(method='POST'  action='/bands/setPic/' enctype="multipart/form-data")
+        input(type='hidden' name ='_method' value='put')
+        input(type='hidden' name ='bid' value=band.bid)
+        br
+        b Фото
+        br
+        img(src='/images/main/'+band.mainImage, width='120px')
+        br
+        input(type='file' name ='main_pic')=members
+        br
+        input(type='submit')
+      form(method='POST'  action='/bands/setPic/' enctype="multipart/form-data")
+        input(type='hidden' name ='_method' value='put')
+        input(type='hidden' name ='bid' value=band.bid)
+        br
+        each a in band.albums
+          li.form-control=a.name+" "+a.year
+            div.row
+        div.col-md-4
+          input(type='text', name='title')
+          input.input-small(type='text', name='year')
+        input(type='submit')
   a(href='/bands/') Назад

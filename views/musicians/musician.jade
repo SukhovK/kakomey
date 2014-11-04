@@ -1,0 +1,8 @@
+﻿extends ../layout
+
+block content
+  h2  #{musician.name}
+  div.row
+    div.col-md-7 
+      img.rfloat.img-rounded(src="/images/persons/"+musician.mainImage, width="180px")
+      |#{musician.bio}

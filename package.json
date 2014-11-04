@@ -11,7 +11,8 @@
     "mongoose": "*",
     "stylus": "*",
     "less": "^1.7.5",
-    "less-middleware": "^1.0.4"
+    "less-middleware": "^1.0.4",
+	"imagemagick": "*"
   },
   "devDependencies": {
     "less": "^1.7.5",

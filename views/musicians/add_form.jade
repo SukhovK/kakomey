@@ -1,0 +1,14 @@
+﻿extends ../layout
+
+block content
+  div
+    form(method='POST' action='/musicians/add/') Добавить группу
+      br
+      b Имя
+      br
+      input(type='text' name ='person_name')
+      br
+      input(type='text' name ='person_name')
+      br
+      input(type='submit')
+  a(href='/bands/') Назад
