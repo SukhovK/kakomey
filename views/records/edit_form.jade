@@ -33,20 +33,23 @@ block content
         br
         b Фото
         br
-        img(src='/images/main/'+record.mainImage, width='120px')
+        img(src='/images/covers/'+record.rid+'R'+record.cover, width='120px')
         br
         input(type='file' name ='cover')=members
         br
         input(type='submit')
-      form(method='POST'  action='/records/setPic/' enctype="multipart/form-data")
+      form(method='POST'  action='/records/addSong')
         input(type='hidden' name ='_method' value='put')
         input(type='hidden' name ='rid' value=record.rid)
         br
-        each m in record.members
-          li.form-control=a.name
-            div.row
+        each s in record.songs
+          li.form-control=s.order+" "+s.title+" "+s.time
+            a(href='/bands/del/'+s.order)
+              i.glyphicon.glyphicon-remove.mint
+              div.row
         div.col-md-4
+          input.input-small(type='text' size=2 name='order' value=countSongs)
           input(type='text', name='title')
-          input.input-small(type='text', name='year')
-        input(type='submit')
+          input.input-small(type='text' size=5 name='time')
+          input(type='submit')
   a(href='/bands/') Назад

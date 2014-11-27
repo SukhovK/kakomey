@@ -29,7 +29,7 @@ exports.show = function(req, res) {
 exports.addForm = function(req, res) {
     res.render('records/add_form');
 };
-// добавление новой альбома 
+// добавление нового альбома 
 exports.create = function(req, res) {
 RecordModel.find().sort({rid: -1}).findOne(function (err, record) {
 	if(record){
@@ -87,17 +87,19 @@ exports.editForm = function(req, res){
 	    if (!err) {
             var record = record[0];
 			//console.log(record);
-	        if(!fs.existsSync('public/images/covers/'+rid+'/'+record.cover)){
+	        if(!fs.existsSync('public/images/covers/'+rid+'R'+record.cover)){
 		        record.cover = 'disc.jpg';
 		    }
-
+            var countSongs = record.songs.lenght;
+			console.log(record.songs.lenght);
 		    var persons=[];
 		    for(i=0; i < record.members.length; i++){
 			    persons.push(record.members[i].name);
 		    }
 		    res.render('records/edit_form',
 			    {   record: record, 
-					members: persons.join(',')
+					members: persons.join(','),
+					countSongs: countSongs
 				});
         } else {
 		    console.log(err);
@@ -140,7 +142,14 @@ exports.edit = function(req, res){
 exports.setPic = function(req, res){
     var rid = req.body.rid;
     var src = req.files.cover.path;
-    fs.renameSync(src, "public/images/covers/"+rid+"/"+req.files.cover.name);
+	var path = "public/images/covers/"+rid+"R"+req.files.cover.name;
+	var tumb = "public/images/covers/tumbs/"+rid+"R"+req.files.cover.name;
+    fs.renameSync(src, path);
+	var imagic = require('imagemagick');
+	//Ресайзим
+    imagic.resize({ srcPath: path, dstPath: tumb, width: 100, filter: 'Point' }, function(err, stdout, stderr){
+        if (err) throw err;
+    });
 	var updateRecord = {
       rid: rid,
 	  cover: req.files.cover.name
@@ -156,4 +165,28 @@ exports.setPic = function(req, res){
         }
     });
 	
+}
+exports.addSong  = function(req, res){
+
+    var rid = req.body.rid;
+	var newSong = {
+	  rid: rid,
+      order: req.body.order,
+	  title: req.body.title,
+	  time: req.body.time
+    };
+	RecordModel.find({rid:rid},function(err,record){ 
+      record[0].songs.push(newSong);
+	  updateRecord = {
+	      songs : record[0].songs
+	  }
+      RecordModel.update({rid:rid}, updateRecord, function(err,data){
+  	    if (!err) {		
+            console.log("Данные сохранены");
+			res.redirect('/records/'+rid);			
+        } else {
+		    console.log(err);
+		}
+      });  
+  });	
 }

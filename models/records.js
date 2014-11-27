@@ -10,7 +10,7 @@ var RecordSchema = new mongoose.Schema( {
 		lable: {type: String},
 		review: {type: String},
         members:[{aid: Number, name: String, role:Array}],
-		songs:[{order: Number, name: String, time:String}],
+		songs:[{order: Number, title: String, time:String}],
     });
 
 RecordSchema.statics.getLastUid = function (){

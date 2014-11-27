@@ -7,7 +7,10 @@ var app = express();
 var port = process.env.PORT || 8080;
 var http = require('http');
 var path = require('path');
-
+/* require('nodetime').profile({
+    accountKey: 'fa879692449f53968b1b61dba36262362ce38394', 
+    appName: 'Node.js Application'
+}); */
 app.configure(function(){
     app.set('view engine', 'jade');
     app.set('view options', { layout: true });

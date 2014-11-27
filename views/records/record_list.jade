@@ -7,8 +7,9 @@ block content
       li
         div.row
           div.col-md-4
-            a(href='/records/'+r.rid)
-              i.glyphicon.glyphicon-music &nbsp;
+            a(href='/records/'+recordsList[r].rid)
+              img.img-rounded(src="/images/covers/tumbs/"+recordsList[r].rid+"R"+recordsList[r].cover, width="40px")
+              &nbsp;
               =recordsList[r].title+" ("+recordsList[r].group+") "+recordsList[r].year
           div.col-md-1
             a(href='/records/edit/'+recordsList[r].rid)
@@ -17,7 +18,5 @@ block content
               &nbsp;
             a(href='/records/del/'+recordsList[r].rid)
               i.glyphicon.glyphicon-remove.mint
-          
   a(href='/records/add')
     i.glyphicon.glyphicon-plus
-	

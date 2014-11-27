@@ -32,12 +32,12 @@ exports.addForm = function(req, res) {
 };
 // добавление новой группы 
 exports.create = function(req, res) {
-BandModel.find().sort({bid: -1}).findOne(function (err, band) {
-	var bid = band.bid + 1;
-	var newBand = {
-      bid: bid,
-      name: req.body.band_name,
-	  state: req.body.band_state,
+	BandModel.find().sort({bid: -1}).findOne(function (err, band) {
+		var bid = band.bid + 1;
+		var newBand = {
+		bid: bid,
+		name: req.body.band_name,
+		state: req.body.band_state,
 	};
     var Band = new BandModel(newBand);
     Band.save(function(err,data){
@@ -109,27 +109,7 @@ exports.editForm = function(req, res){
 exports.edit = function(req, res){
   var bid = req.body.bid;
   var bandMembers = [];
-  var members = req.body.members.split(',');
-  members.forEach(function(item){
-      person = {
-	          name: item, 
-		      aid: ""
-		  }
-      bandMembers.push(person);
-  }); 
-
- /* var bandAlbums = [];
- var albums = req.body.albums.split('\n');
-  albums.forEach(function(item){
-      var realise = item.split('|');
-      var album = {
-	          name: realise[0], 
-		      uid: "",
-			  year: realise[1]
-		  }
-  bandAlbums.push(album); 
-
-  }); */
+ 
   
    console.log('control1');
   var updateBand = {
@@ -167,6 +147,48 @@ exports.setPic = function(req, res){
         } else {
 		    console.log(err);
         }
-    });
-	
+    });	
+}
+exports.addMember  = function(req, res){
+	var MusicianModel    = require('../models/musicians').MusicianModel;
+    var bid = req.body.bid;
+	MusicianModel.find().sort({aid: -1}).findOne(function (err, person) {
+		var newMember = {
+			aid: person.aid + 1,
+			name: req.body.name
+		};
+		BandModel.find({bid:bid},function(err,band){ 
+			band[0].members.push(newMember);
+			updateBand = {
+				members : band[0].members
+			}
+      BandModel.update({bid:bid}, updateBand, function(err,data){
+  	    if (!err) {		
+            console.log("Данные сохранены");
+			res.redirect('/bands/'+bid);			
+        } else {
+		    console.log(err);
+		}
+			});  
+		});	
+   });
+}
+exports.deleteMember  = function(req, res){
+    var bid = 15;
+	console.log(bid);
+	/*	BandModel.find({bid:bid},function(err,band){ 
+			var members = band[0].members;
+			console.log(members);
+			updateBand = {
+				members : members
+			}
+      BandModel.update({bid:bid}, updateBand, function(err,data){
+  	    if (!err) {		
+            console.log("Данные сохранены");
+			res.redirect('/bands/edit/'+bid);			
+        } else {
+		    console.log(err);
+		}
+			});  
+		});	*/
 }
