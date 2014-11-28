@@ -4,17 +4,28 @@ block content
   h2  #{band.name}
       i  (#{band.state})
   div.row
-    div.col-md-7 
-      img.rfloat.img-rounded(src="/images/main/"+band.mainImage, width="180px")
+    div.col-md-4
       |#{band.short}
-    div.col-md-4 Состав:
-      each m in band.members
-        li
-          a(href='/bands/')=m.name
-  hr
+    div.col-md-3 
+      img.img-rounded(src="/images/main/"+band.mainImage, width="230px")
   div.row
-    div.col-md-7 !{band.history)
-    div.col-md-4 Дискография:
+    div.col-md-7
+      ul.nav.nav-tabs(role="tablist")
+        li.active(role="presentation")
+          a(href='#bio'  aria-controls="bio" role="tab" data-toggle="tab") Биография
+        li(role="presentation")
+          a(href='#rec'  aria-controls="Profile" role="tab" data-toggle="tab") Дискография
+        li(role="presentation")
+          a(href='#mem'  aria-controls="Messages" role="tab" data-toggle="tab") Состав
+  br
+  div.row.tab-content
+    div.col-md-7.tab-pane.fade.in.active(role="tabpanel"  id="bio") !{band.history}
+    div.col-md-7.tab-pane.fade(role="tabpanel"  id="rec")
       each a in band.albums
         li
           a(href='/records/'+a.rid)=a.name+" "+a.year
+    div.col-md-7.tab-pane.fade(role="tabpanel"  id="mem")
+      each m in band.members
+        li
+          a(href='/bands/')=m.name
+
