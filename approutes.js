@@ -27,6 +27,6 @@ exports.route = function(app, controller) {
 	    console.log(controller+"NEST");
 	    app.put('/bands/addMember', controllerObject.addMember);
 		console.log(controller+"NEST1");
-		app.get('/bands/deleteMember/:id', controllerObject.deleteMember);
+		app.get('/bands/deleteMember/:aid/:bid', controllerObject.deleteMember);
 	}
 };

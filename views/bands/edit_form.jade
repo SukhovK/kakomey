@@ -42,7 +42,7 @@ block content
         br
         each m in band.members
           li.form-control=m.name
-             a(href='/bands/deleteMember/'+m.aid)
+             a(href='/bands/deleteMember/'+m.aid+'/'+band.bid)
                i.glyphicon.glyphicon-remove.mint
         input(type='text', name='name' size=26)
         br

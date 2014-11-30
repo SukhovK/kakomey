@@ -1,8 +1,10 @@
 ﻿extends ../layout
 
 block content
-  h2  #{band.name}
-      i  (#{band.state})
+  div.row
+    div.col-md-4
+      h2  #{band.name}
+        i  (#{band.state})
   div.row
     div.col-md-4
       |#{band.short}
@@ -23,7 +25,9 @@ block content
     div.col-md-7.tab-pane.fade(role="tabpanel"  id="rec")
       each a in band.albums
         li
-          a(href='/records/'+a.rid)=a.name+" "+a.year
+          img.img-thumbnail(src="/images/covers/tumbs/"+a.rid+"R"+covers[a.rid], width="60px")
+          &nbsp;
+          a(href='/records/'+a.rid)=a.name+" "+covers[a.year]
     div.col-md-7.tab-pane.fade(role="tabpanel"  id="mem")
       each m in band.members
         li
