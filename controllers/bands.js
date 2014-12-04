@@ -270,7 +270,7 @@ exports.addRecord  = function(req, res){
 }
 exports.deleteRecord  = function(req, res){
     var bid = req.params.bid;
-	var aid = req.params.aid;
+	var rid = req.params.rid;
 	console.log(aid);
 		BandModel.find({bid:bid},function(err,band){ 	
 			var members = band[0].members;
