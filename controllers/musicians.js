@@ -60,28 +60,30 @@ exports.create = function(req, res) {
 	});
   }); 
 };
-// подтвеждение удаления группы
+// подтвеждение удаления
 exports.deleteForm = function(req, res){
-    var id = req.params.bid
-    BandModel.find({bid:id},function (err, band) {
+    var aid = req.params.id
+    MusicianModel.find({aid:aid},function (err, person) {
 	    if (!err) {
-			res.render('bands/delete_form',{band: band[0]});
+		console.log(person);
+			res.render('musicians/delete_form',{person: person[0]});
         } else {
 		    console.log(err);
 		}
 	}); 
 }
-// удаление группы
+// удаление
 exports.delete = function(req, res){
-    var id = req.body.aid;	
-	BandModel.remove({aid:id}, function(err){
+    var aid = req.body.aid;	
+	MusicianModel.remove({aid:aid}, function(err){
 		if (!err) {
-			console.log('Группа удалена');
+			console.log('удален');
 			res.redirect('/musicians/');
         } else {
 		    console.log(err);
 		}
 	}); 
+	
 }
 // форма для редактирования
 exports.editForm = function(req, res){

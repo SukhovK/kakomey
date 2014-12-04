@@ -9,8 +9,6 @@ exports.route = function(app, controller) {
     app.get('/'+controller+'/', controllerObject.index);
     console.log(controller);
 	app.get('/'+controller + '/:id', controllerObject.show);
-
-	
 	
 	app.get('/'+controller + '/del/:id', controllerObject.deleteForm);
     app.del('/'+controller + '/del', controllerObject.delete);
@@ -24,9 +22,9 @@ exports.route = function(app, controller) {
 	}
     // bands
 	if(controller == 'bands'){
-	    console.log(controller+"NEST");
 	    app.put('/bands/addMember', controllerObject.addMember);
-		console.log(controller+"NEST1");
 		app.get('/bands/deleteMember/:aid/:bid', controllerObject.deleteMember);
+	    app.put('/bands/addRecord', controllerObject.addRecord);
+		//app.get('/bands/deleteRecord/:aid/:bid', controllerObject.deleteRecord);
 	}
 };

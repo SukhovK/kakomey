@@ -175,39 +175,50 @@ exports.setPic = function(req, res){
 exports.addMember  = function(req, res){
 	var MusicianModel    = require('../models/musicians').MusicianModel;
     var bid = req.body.bid;
-	MusicianModel.find().sort({aid: -1}).findOne(function (err, person) {
-		var newMember = {
-			aid: person.aid + 1,
-			name: req.body.name
-		};
-		Musician = new MusicianModel(newMember);
-        Musician.save(function(err,data){
-			if (!err) {		
-				BandModel.find({bid:bid},function(err,band){ 
-					band[0].members.push(newMember);
-					updateBand = {
-						members : band[0].members
+	console.log(bid);
+	BandModel.find({bid:bid},function(err,band){
+		if(err){
+			console.log(err);
+		}
+		var band1 = band[0];
+	    MusicianModel.find().sort({aid: -1}).findOne(function (err, person) {
+	        if (!err) {	
+				var newMember = {
+					aid: person.aid + 1,
+					name: req.body.name
+				};
+				var newMusician = newMember;
+				newMusician.groups = [{bid: bid, name: band1.name}];
+				Musician = new MusicianModel(newMusician);
+				Musician.save(function(err,data){
+					if (!err) {		
+					//	BandModel.find({bid:bid},function(err,band){ 
+							band1.members.push(newMember);
+							updateBand = {
+								members : band1.members
+							}
+							BandModel.update({bid:bid}, updateBand, function(err,data){
+								if (!err) {		
+									console.log("Данные сохранены");
+									res.redirect('/bands/edit/'+bid);			
+								} else {
+									console.log(err);
+								}
+							});  
+						//});						
 					}
-					BandModel.update({bid:bid}, updateBand, function(err,data){
-						if (!err) {		
-							console.log("Данные сохранены");
-							res.redirect('/bands/edit/'+bid);			
-						} else {
-							console.log(err);
-						}
-					});  
-				});						
+				});	
+			
 			}
 		});	
-   });
+	});
 }
 
 exports.deleteMember  = function(req, res){
     var bid = req.params.bid;
 	var aid = req.params.aid;
-	
 	console.log(aid);
-		BandModel.find({bid:bid},function(err,band){ 
+		BandModel.find({bid:bid},function(err,band){ 	
 			var members = band[0].members;
 			console.log(members);
 			for(j=0;j < members.length; j++){
@@ -218,14 +229,51 @@ exports.deleteMember  = function(req, res){
 			console.log(members);
 			updateBand = {
 				members : members
-			}
+			} 
       BandModel.update({bid:bid}, updateBand, function(err,data){
   	    if (!err) {		
-            console.log("Данные сохранены");
-			res.redirect('/bands/edit/'+bid);			
-        } else {
-		    console.log(err);
-		}
-			});  
+				console.log("Данные сохранены");
+				res.redirect('/bands/edit/'+bid);			
+			} else {
+				console.log(err);
+			} 
+		});  
+	});	
+}
+exports.addRecord  = function(req, res){
+	var RecordModel    = require('../models/records').RecordModel;
+    var bid = req.body.bid;
+	BandModel.find({bid:bid},function(err,band){
+	    RecordModel.find().sort({rid: -1}).findOne(function (err, record) {
+	        if (!err) {	
+				var newRecord = {
+					rid: record.rid + 1,
+					title: req.body.title,
+					year: req.body.year,
+					order: req.body.order					
+				};
+				var disk = newRecord;
+				disk.group =  band.name;
+				Record = new RecordModel(disk);
+				Record.save(function(err,data){
+					if (!err) {		
+							band[0].albums.push(newRecord);
+							updateBand = {
+								albums : band[0].albums
+							}
+							BandModel.update({bid:bid}, updateBand, function(err,data){
+								if (!err) {		
+									console.log("Данные сохранены");
+									res.redirect('/bands/edit/'+bid);			
+								} else {
+									console.log(err);
+								}
+							});  
+					
+					}
+				});	
+			
+			}
 		});	
+	});
 }

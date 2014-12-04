@@ -9,9 +9,10 @@ var BandSchema = new mongoose.Schema( {
 		short: {type: String},
 		history: {type: String},
         members:[{aid: Number, name: String}],
-		albums:[{rid: Number, name: String, year: Number}]
+		albums:[{rid: Number, name: String, year: Number, order:Number}]
     });
 
+	
 BandSchema.statics.getLastBid = function (){
     var coll =this.find({}).sort({'bid': -1}).limit(1);
 	console.log(coll.bid);
