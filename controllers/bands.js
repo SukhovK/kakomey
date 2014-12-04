@@ -99,26 +99,17 @@ exports.editForm = function(req, res){
 	        if(!fs.existsSync('public/images/main/'+group.mainImage)){
 		        group.mainImage = 'main.jpg';
 		    }
-
 		    var persons=[];
-		    for(i=0; i < group.members.length; i++){
-			    console.log(group.members);
-				
+		    for(i=0; i < group.members.length; i++){				
 			    if(group.members[i]){
-				    console.log(i);
 			        persons.push(group.members[i].name);
-					}
+				}
 		    }
 			var albums=[];
 			// console.log(group.albums);
 		    for(i=0; i < group.albums.length; i++){
 			    albums.push(group.albums[i].name+'|'+group.albums[i].year);
 		    }
-			console.log("test");
-            console.log(persons);
-			////////////////
-			//group.members=[];
-			////////////////////
 		    res.render('bands/edit_form',
 			          {band: group, 
 					         members: persons, 
@@ -252,6 +243,7 @@ exports.addRecord  = function(req, res){
 					year: req.body.year,
 					order: req.body.order					
 				};
+				console.log(newRecord);
 				var disk = newRecord;
 				disk.group =  band.name;
 				Record = new RecordModel(disk);
@@ -268,12 +260,37 @@ exports.addRecord  = function(req, res){
 								} else {
 									console.log(err);
 								}
-							});  
-					
+							});  					
 					}
 				});	
 			
 			}
 		});	
 	});
+}
+exports.deleteRecord  = function(req, res){
+    var bid = req.params.bid;
+	var aid = req.params.aid;
+	console.log(aid);
+		BandModel.find({bid:bid},function(err,band){ 	
+			var members = band[0].members;
+			console.log(members);
+			for(j=0;j < members.length; j++){
+			    if(members[j].aid == aid){	
+					members.splice(j,1);
+				}			    
+			}
+			console.log(members);
+			updateBand = {
+				members : members
+			} 
+      BandModel.update({bid:bid}, updateBand, function(err,data){
+  	    if (!err) {		
+				console.log("Данные сохранены");
+				res.redirect('/bands/edit/'+bid);			
+			} else {
+				console.log(err);
+			} 
+		});  
+	});	
 }

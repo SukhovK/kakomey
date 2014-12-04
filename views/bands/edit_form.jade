@@ -53,8 +53,10 @@ block content
         br
         each a in band.albums
           li.form-control=a.name+" "+a.year
+             a(href='/bands/deleteRecord/'+a.rid+'/'+band.bid)
+               i.glyphicon.glyphicon-remove.mint
         input.lfloat(type='text' size=2 name='order' value=countSongs)
         input.lfloat(type='text', name='title' size=20)
-        input.lfloat(type='text' size=2 name='time')
+        input.lfloat(type='text' size=2 name='year')
         input(type='submit')
   a(href='/bands/') Назад

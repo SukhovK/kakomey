@@ -25,6 +25,7 @@ exports.route = function(app, controller) {
 	    app.put('/bands/addMember', controllerObject.addMember);
 		app.get('/bands/deleteMember/:aid/:bid', controllerObject.deleteMember);
 	    app.put('/bands/addRecord', controllerObject.addRecord);
+		app.get('/bands/deleteRecord/:rid/:bid', controllerObject.deleteRecord);
 		//app.get('/bands/deleteRecord/:aid/:bid', controllerObject.deleteRecord);
 	}
 };
