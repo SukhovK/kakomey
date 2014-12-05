@@ -42,9 +42,10 @@ app.configure('development', function(){
 app.get('/', function(req, res) {
    var BandModel    = require('./models/bands').BandModel;
       BandModel.find({},function (err, bands) {
-	if (!err) {
-	  res.render('index', {title:'Bands',bandsList: bands});
-	}
+		if (!err) {
+			bands=snifle(bands);
+			res.render('index', {title:'Bands',bandsList: bands});
+		}
       });
 });
 var prefixes = ['bands','musicians','records'];
@@ -54,3 +55,13 @@ prefixes.forEach(function(prefix) {
 });
 http.createServer(app).listen(8080);
 console.log("Express server listening on port 8080");
+
+function snifle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+        var num = Math.floor(Math.random() * (i + 1));
+        var d = arr[num];
+        arr[num] = arr[i];
+        arr[i] = d;
+    }
+    return arr;
+}
