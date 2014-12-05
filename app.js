@@ -29,7 +29,7 @@ app.configure(function(){
 });
 
 app.use(function(req, res, next){
-throw new Error(req.url + ' not found');
+  throw new Error(req.url + ' not found');
 });
 app.use(function(err, req, res, next) {
     console.log(err);
@@ -39,7 +39,14 @@ app.use(function(err, req, res, next) {
 app.configure('development', function(){
     app.use(express.errorHandler());
 });
-
+app.get('/', function(req, res) {
+   var BandModel    = require('./models/bands').BandModel;
+      BandModel.find({},function (err, bands) {
+	if (!err) {
+	  res.render('index', {title:'Bands',bandsList: bands});
+	}
+      });
+});
 var prefixes = ['bands','musicians','records'];
 // map route to controller
 prefixes.forEach(function(prefix) {

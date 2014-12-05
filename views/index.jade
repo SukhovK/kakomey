@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  div  #{textBody}
+  h3= title
+
+  div.row
+    - for (var b in bandsList)
+      div.col-sm-6.col-md-3
+        div.thumbnail
+          img.img-rounded(src="/images/main/"+bandsList[b].mainImage, width="180px")
+          div.caption
+            h3
+              =bandsList[b].name
+            p
+              =bandsList[b].short
+            p
+              a.btn.btn-primary(href="#" role="button") Button
+
