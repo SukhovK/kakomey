@@ -2,11 +2,10 @@
 var fs = require('fs');
 exports.index = function(req, res) {
    BandModel.find({},function (err, bands) {
-   console.log('start')
-	    if (!err) {
+    if (!err) {
            res.render('bands/band_list', {title:'Bands',bandsList: bands});
         } else {
-		   console.log(err);
+	  console.log(err);
 		}
 	});
 };
