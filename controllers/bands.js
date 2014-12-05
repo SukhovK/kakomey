@@ -271,10 +271,10 @@ exports.addRecord  = function(req, res){
 exports.deleteRecord  = function(req, res){
     var bid = req.params.bid;
 	var rid = req.params.rid;
-	console.log(aid);
+	console.log(rid);
 		BandModel.find({bid:bid},function(err,band){ 	
-			var members = band[0].members;
-			console.log(members);
+			var records = band[0].records;
+			console.log(records);
 			for(j=0;j < members.length; j++){
 			    if(members[j].aid == aid){	
 					members.splice(j,1);
