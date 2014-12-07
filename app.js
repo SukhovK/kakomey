@@ -2,7 +2,8 @@
 var stylus = require('stylus');
 var lessMiddleware = require('less-middleware');
 var map = require('./approutes');
-
+var session = require('express-session')
+var passport = require('passport');
 var app = express();
 var port = process.env.PORT || 8080;
 var http = require('http');
@@ -17,9 +18,22 @@ app.configure(function(){
     app.set('views', __dirname + '/views');	
     app.use(express.favicon());
 	//app.use(express.logger());
+
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(app.router);
+	//app.use(express.cookieDecoder());
+
+	app.use(session({
+		secret: 'keyboard cat',
+		resave: false,
+		saveUninitialized: true
+	}))
+	
+	app.use(passport.initialize()); 
+	app.use(passport.session());
+
+
     app.use(lessMiddleware(__dirname + '/views', {
        dest: __dirname + '/public'
       })

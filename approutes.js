@@ -13,7 +13,7 @@ exports.route = function(app, controller) {
 	app.get('/'+controller + '/del/:id', controllerObject.deleteForm);
 	app.del('/'+controller + '/del', controllerObject.delete);
 		
-	app.get('/'+controller + '/edit/:id', controllerObject.editForm);
+	app.get('/'+controller + '/admin/edit/:id', controllerObject.editForm);
 	app.put('/'+controller + '/edit', controllerObject.edit);
 	app.put('/'+controller + '/setPic', controllerObject.setPic);
 	// records
