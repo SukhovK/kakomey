@@ -4,14 +4,69 @@ var lessMiddleware = require('less-middleware');
 var map = require('./approutes');
 var session = require('express-session')
 var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
 var app = express();
 var port = process.env.PORT || 8080;
 var http = require('http');
 var path = require('path');
+var crypto = require('crypto');
+
 /* require('nodetime').profile({
     accountKey: 'fa879692449f53968b1b61dba36262362ce38394', 
     appName: 'Node.js Application'
 }); */
+var users= [
+]
+users[1] ={username: 'admin', password: 'pmyPass'};
+function ensureAuthenticated(req, res, next) {
+	if (req.isAuthenticated()) { return next(); }
+	res.redirect('/login')
+}
+passport.serializeUser(function(user, done) {
+	done(null, user.id);
+});
+passport.deserializeUser(function(id, done) {
+	var user = users[id];
+	done(err, user);
+});
+passport.use(new LocalStrategy(
+	function(username, password, done) {
+		var client = mysql.createClient({
+			user : 'username',
+			password: 'password'
+		});
+		client.query('USE nodetest2');
+		client.query('SELECT userid, password, salt FROM user WHERE username = ?',
+		[username], function(err, result, fields) {
+			// database error
+			if (err) {
+				return done(err);
+		// username not found
+			} else if (result.length == 0) {
+				return done(null, false, {message: 'Unknown user ' + username});
+// check password
+			} else {
+				var newhash = crypto.createHash('sha512')
+					.update(result[0].salt + password)
+					.digest('hex');
+// if passwords match
+				if (result[0].password === newhash) {
+					var user = {id : result[0].userid,
+								username : username,
+								password : newhash };
+					return done(null, user);
+					// else if passwords don't match
+					} else {
+						return done(null, false, {message: 'Invalid password'});
+					}
+				}
+			client.end();
+		});
+	})
+);
+
+client.query('USE nodetest2');
+client.query('SELECT userid, password, salt FROM user WHERE username = ?',
 app.configure(function(){
     app.set('view engine', 'jade');
     app.set('view options', { layout: true });
@@ -29,10 +84,20 @@ app.configure(function(){
 		resave: false,
 		saveUninitialized: true
 	}))
-	
+	/////////////////////////////
 	app.use(passport.initialize()); 
 	app.use(passport.session());
+	passport.serializeUser(function(user, done) {
+		done(null, user._id);
+	}); 
+	passport.deserializeUser(function(id, done) {
+		User.findById(id, function(err, user) {
+			done(err, user); 
+		);
+	})
 
+	
+//////////////////////////////////////////
 
     app.use(lessMiddleware(__dirname + '/views', {
        dest: __dirname + '/public'
