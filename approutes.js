@@ -13,7 +13,7 @@ exports.route = function(app, controller) {
 	app.get('/'+controller + '/admin/del/:id', controllerObject.deleteForm);
 	app.del('/'+controller + '/admin/del', controllerObject.delete);
 		
-	app.get('/'+controller + '/admin/edit/:id', controllerObject.editForm);
+	app.get('/'+controller + '/admin/edit/:id', ensureAuthenticated, controllerObject.editForm);
 	app.put('/'+controller + '/edit', controllerObject.edit);
 	app.put('/'+controller + '/admin/setPic', controllerObject.setPic);
 	// records
@@ -29,3 +29,7 @@ exports.route = function(app, controller) {
 		//app.get('/bands/deleteRecord/:aid/:bid', controllerObject.deleteRecord);
 	}
 };
+function ensureAuthenticated(req, res, next) {
+	if (req.isAuthenticated()) { return next(); }
+	res.redirect('/login')
+}

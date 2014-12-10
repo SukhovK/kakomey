@@ -5,7 +5,7 @@ var map = require('./approutes');
 var session = require('express-session')
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
-var app = express();
+var flash = require('connect-flash');
 var port = process.env.PORT || 8080;
 var http = require('http');
 var path = require('path');
@@ -15,15 +15,14 @@ var crypto = require('crypto');
     accountKey: 'fa879692449f53968b1b61dba36262362ce38394', 
     appName: 'Node.js Application'
 }); */
-var users= [
-]
-users[1] ={username: 'admin', password: 'pmyPass'};
+var users= [];
+users[1] ={userid:1, username: 'admin', password: 'pmyPass'};
 function ensureAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) { return next(); }
 	res.redirect('/login')
 }
 passport.serializeUser(function(user, done) {
-	done(null, user.id);
+	done(null, user.userid);
 });
 passport.deserializeUser(function(id, done) {
 	var user = users[id];
@@ -35,6 +34,9 @@ passport.use(new localStrategy(
     users.forEach(function(item){
       if(item.username == username){
 	 if(item.password= password){
+	    var user = {userid : item.userid,
+			username : username,
+			password : password };
 	    return done(null, user);
 	 } else {
 	  return done(null, false, {message: 'Invalid password'});
@@ -47,25 +49,30 @@ passport.use(new localStrategy(
   })
 );
 
-
+var app = express();
 app.configure(function(){
     app.set('view engine', 'jade');
     app.set('view options', { layout: true });
     app.set('views', __dirname + '/views');	
     app.use(express.favicon());
 	//app.use(express.logger());
+    app.use(app.router);
     app.use(express.bodyParser());
     app.use(express.methodOverride());
-    app.use(app.router);
-	//app.use(express.cookieDecoder());
-    app.use(session({
+    
+    //app.use(express.cookieDecoder());
+   app.use(session({
 		secret: 'keyboard cat',
 		resave: false,
 		saveUninitialized: true
-	}))
+	}));
+   
+   app.use(flash());
+   app.use(passport.initialize());
+   app.use(passport.session());
 	/////////////////////////////
-    app.use(passport.initialize()); 
-    app.use(passport.session());
+  /*    app.use(passport.initialize()); 
+    app.use(passport.session()); */
 
 
     app.use(lessMiddleware(__dirname + '/views', {
@@ -88,6 +95,8 @@ app.use(function(err, req, res, next) {
 app.configure('development', function(){
     app.use(express.errorHandler());
 });
+
+
 app.get('/', function(req, res) {
    var BandModel    = require('./models/bands').BandModel;
       BandModel.find({},function (err, bands) {
@@ -97,6 +106,22 @@ app.get('/', function(req, res) {
 		}
       });
 });
+
+app.get('/admin', ensureAuthenticated, function(req, res){
+  res.render('index', { title: 'authenticate', user: req.user });
+});
+
+app.get('/login', function(req, res){
+  var username = req.user ? req.user.username : '';
+  res.render('login', { title: 'authenticate', username: username, message: 'error' });
+});
+
+app.post('/login',
+  passport.authenticate('local', { failureRedirect: '/login'}),
+  function(req, res) {
+    res.redirect('/admin');
+});
+
 var prefixes = ['bands','musicians','records'];
 // map route to controller
 prefixes.forEach(function(prefix) {
