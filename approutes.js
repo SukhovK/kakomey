@@ -7,6 +7,7 @@ exports.route = function(app, controller) {
 	app.get('/'+controller + '/admin/add', controllerObject.addForm);
 	app.post('/'+controller + '/admin/add', controllerObject.create);
 	app.get('/'+controller+'/', controllerObject.index);
+	//app.get('/'+controller+'/admin/', controllerObject.adminIndex);
 	//console.log(controller);
 	app.get('/'+controller + '/:id', controllerObject.show);
 	

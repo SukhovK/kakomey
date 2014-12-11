@@ -4,7 +4,7 @@ var lessMiddleware = require('less-middleware');
 var map = require('./approutes');
 var session = require('express-session')
 var passport = require('passport');
-var localStrategy = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var port = process.env.PORT || 8080;
 var http = require('http');
@@ -29,22 +29,26 @@ passport.deserializeUser(function(id, done) {
 	done(err, user);
 });
 
-passport.use(new localStrategy(
+passport.use(new LocalStrategy(
   function(username, password, done) { 
-    users.forEach(function(item){
-      if(item.username == username){
-	 if(item.password= password){
-	    var user = {userid : item.userid,
-			username : username,
-			password : password };
-	    return done(null, user);
-	 } else {
-	  return done(null, false, {message: 'Invalid password'});
-	}
+  console.log("tttt".users.lenght);
+	for(var i=1; i <= users.lenght; i++){
+	console.log(users[i]+users.lenght);
+      if(users[i].username == username){
+		if(users[i].password= password){
+			var user = {userid : users[i].userid,
+				username : username,
+				password : password 
+			};
+			console.log("stop2");
+			return done(null, user);
+		} else {
+			return done(null, false, {message: 'Invalid password'});
+		}
       }
-    });
+    }
     
-    return done(null, false, {message: 'Unknown user ' + username});
+		return done(null, false, {message: 'Unknown user ' + username});
  
   })
 );
@@ -56,7 +60,7 @@ app.configure(function(){
     app.set('views', __dirname + '/views');	
     app.use(express.favicon());
 	//app.use(express.logger());
-    app.use(app.router);
+    
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     
@@ -74,7 +78,7 @@ app.configure(function(){
   /*    app.use(passport.initialize()); 
     app.use(passport.session()); */
 
-
+    app.use(app.router);
     app.use(lessMiddleware(__dirname + '/views', {
        dest: __dirname + '/public'
       })
@@ -88,7 +92,7 @@ app.use(function(req, res, next){
 });
 
 app.use(function(err, req, res, next) {
-    console.log(err);
+    console.log(err+"7");
     res.send(err.message);
 });
 
@@ -98,6 +102,7 @@ app.configure('development', function(){
 
 
 app.get('/', function(req, res) {
+   console.log("stop45");
    var BandModel    = require('./models/bands').BandModel;
       BandModel.find({},function (err, bands) {
 		if (!err) {
@@ -108,11 +113,13 @@ app.get('/', function(req, res) {
 });
 
 app.get('/admin', ensureAuthenticated, function(req, res){
+console.log("stop4");
   res.render('index', { title: 'authenticate', user: req.user });
 });
 
 app.get('/login', function(req, res){
-  var username = req.user ? req.user.username : '';
+  console.log("test");
+  var username = req.username ? req.user.username : '';
   res.render('login', { title: 'authenticate', username: username, message: 'error' });
 });
 
@@ -127,7 +134,7 @@ var prefixes = ['bands','musicians','records'];
 prefixes.forEach(function(prefix) {
     map.route(app, prefix);
 });
-http.createServer(app).listen(8070);
+http.createServer(app).listen(8080);
 console.log("Express server listening on port 8080");
 
 function snifle(arr) {
