@@ -15,43 +15,6 @@ var crypto = require('crypto');
     accountKey: 'fa879692449f53968b1b61dba36262362ce38394', 
     appName: 'Node.js Application'
 }); */
-var users= [];
-users[1] ={userid:1, username: 'admin', password: 'pmyPass'};
-function ensureAuthenticated(req, res, next) {
-	if (req.isAuthenticated()) { return next(); }
-	res.redirect('/login')
-}
-passport.serializeUser(function(user, done) {
-	done(null, user.userid);
-});
-passport.deserializeUser(function(id, done) {
-	var user = users[id];
-	done(err, user);
-});
-
-passport.use(new LocalStrategy(
-  function(username, password, done) { 
-  console.log("tttt".users.lenght);
-	for(var i=1; i <= users.lenght; i++){
-	console.log(users[i]+users.lenght);
-      if(users[i].username == username){
-		if(users[i].password= password){
-			var user = {userid : users[i].userid,
-				username : username,
-				password : password 
-			};
-			console.log("stop2");
-			return done(null, user);
-		} else {
-			return done(null, false, {message: 'Invalid password'});
-		}
-      }
-    }
-    
-		return done(null, false, {message: 'Unknown user ' + username});
- 
-  })
-);
 
 var app = express();
 app.configure(function(){
@@ -69,14 +32,9 @@ app.configure(function(){
 		secret: 'keyboard cat',
 		resave: false,
 		saveUninitialized: true
-	}));
-   
-   app.use(flash());
+	}));  
    app.use(passport.initialize());
    app.use(passport.session());
-	/////////////////////////////
-  /*    app.use(passport.initialize()); 
-    app.use(passport.session()); */
 
     app.use(app.router);
     app.use(lessMiddleware(__dirname + '/views', {
@@ -92,8 +50,11 @@ app.use(function(req, res, next){
 });
 
 app.use(function(err, req, res, next) {
-    console.log(err+"7");
+  if(err){
+    console.log('oi');
     res.send(err.message);
+    console.log('oioioi');
+  }
 });
 
 app.configure('development', function(){
@@ -112,13 +73,14 @@ app.get('/', function(req, res) {
       });
 });
 
-app.get('/admin', ensureAuthenticated, function(req, res){
-console.log("stop4");
-  res.render('index', { title: 'authenticate', user: req.user });
+app.get('/login', function(req, res){
+  console.log("testa");
+  var username = req.username ? req.user.username : '';
+  res.render('login', { title: 'authenticate', username: username, message: 'error' });
 });
 
-app.get('/login', function(req, res){
-  console.log("test");
+app.get('/login/:url', function(req, res){
+  console.log("testu");
   var username = req.username ? req.user.username : '';
   res.render('login', { title: 'authenticate', username: username, message: 'error' });
 });
@@ -126,7 +88,12 @@ app.get('/login', function(req, res){
 app.post('/login',
   passport.authenticate('local', { failureRedirect: '/login'}),
   function(req, res) {
-    res.redirect('/admin');
+    res.redirect('/bands/');
+});
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
 });
 
 var prefixes = ['bands','musicians','records'];
@@ -134,6 +101,7 @@ var prefixes = ['bands','musicians','records'];
 prefixes.forEach(function(prefix) {
     map.route(app, prefix);
 });
+
 http.createServer(app).listen(8080);
 console.log("Express server listening on port 8080");
 

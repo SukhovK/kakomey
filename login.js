@@ -1,35 +1,46 @@
-passport.use('login', new LocalStrategy({ passReqToCallback : true }, 
-	function(req, username, password, done) { 
-		// проверка в mongo, существует ли пользователь с таким логином 
-		User.findOne({ 'username' : username }, function(err, user) {
-		// В случае возникновения любой ошибки, возврат с помощью метода done
-			if (err) return done(err); // Пользователь не существует, ошибка входа и перенаправление обратно
-				if (!user){ console.log('User Not Found with username '+username);
-					return done(null, false, req.flash('message', 'User Not found.'));
-			} 
-			// Пользователь существует, но пароль введен неверно, ошибка входа
-			if (!isValidPassword(user, password)){ console.log('Invalid Password');
-				return done(null, false, req.flash('message', 'Invalid Password'));
-			} // Пользователь существует и пароль верен, возврат пользователя из
-			   // метода done, что будет означать успешную аутентификацию
+var passport = require('passport');
+var url = require('url')
+var LocalStrategy = require('passport-local').Strategy;
+
+var users= [
+{userid:0, username: 'admin', password: 'myPass'},
+{userid:1, username: 'user', password: 'usPass'}];
+
+passport.use(new LocalStrategy(
+  function(username, password, done) { 
+  console.log("tttt"+users.length);
+	for(var i=0; i <= users.length; i++){
+	  console.log(users[i]);
+	  if(users[i].username == username){
+		if(users[i].password= password){
+			var user = {userid : users[i].userid,
+				username : username,
+				password : password 
+			};
 			return done(null, user);
-		});
-	});
+		} else {
+			return done(null, false, {message: 'Invalid password'});
+		}
+      }
+    }
+    
+		return done(null, false, {message: 'Unknown user ' + username});
+ 
+  })
 );
-var isValidPassword = function(user, password){ 
-	return bCrypt.compareSync(password, user.password); 
+
+passport.serializeUser(function(user, done) {
+	done(null, user.userid);
+});
+passport.deserializeUser(function(id, done) {
+	var user = users[id];
+	done(null, user);
+});
+
+module.exports.ensureAuthenticated =  function ensureAuthenticated(req, res, next) {
+	if (req.isAuthenticated()) { return next(); }
+	  var pathname = url.parse(req.url).pathname;
+	  pathname = "|admin|bands|";
+	  console.log("РџРѕР»СѓС‡РµРЅ Р·Р°РїСЂРѕСЃ " + pathname);	  
+	  res.redirect('/login/'+pathname);
 }
-passport.use('signup', new LocalStrategy(
-	{ passReqToCallback : true }, 
-	function(req, username, password, done) { 
-		findOrCreateUser = function(){ 
-		// поиск пользователя в Mongo с помощью предоставленного имени пользователя 
-		User.findOne({'username':username},
-			function(err, user) { 
-			// В случае любых ошибок - возврат 
-				if (err){ console.log('Error in SignUp: '+err); return done(err); } 
-				// уже существует 
-				if (user) { 
-					console.log('User already exists'); return done(null, false, req.flash('message','User Already Exists')); } else { // если пользователя с таки адресом электронной почты // в базе не существует, создать пользователя var newUser = new User(); // установка локальных прав доступа пользователя newUser.username = username; newUser.password = createHash(password); newUser.email = req.param('email'); newUser.firstName = req.param('firstName'); newUser.lastName = req.param('lastName'); // сохранения пользователя newUser.save(function(err) { if (err){ console.log('Error in Saving user: '+err); throw err; } console.log('User Registration succesful'); return done(null, newUser); }); } }); }; // Отложить исполнение findOrCreateUser и выполнить // метод на следующем этапе цикла события process.nextTick(findOrCreateUser); }); )
-
-

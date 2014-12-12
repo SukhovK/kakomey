@@ -36,24 +36,24 @@ block content
         input(type='file' name ='main_pic')=members
         br
         input(type='submit')
-      form(method='POST'  action='/bands/addMember/' enctype="multipart/form-data")
+      form(method='POST'  action='/admin/bands/addMember/' enctype="multipart/form-data")
         input(type='hidden' name ='_method' value='put')
         input(type='hidden' name ='bid' value=band.bid)
         br
         each m in band.members
           li.form-control=m.name
-             a(href='/bands/deleteMember/'+m.aid+'/'+band.bid)
+             a(href='/admin/bands/deleteMember/'+m.aid+'/'+band.bid)
                i.glyphicon.glyphicon-remove.mint
         input(type='text', name='name' size=26)
         br
         input(type='submit')
-      form(method='POST'  action='/bands/addRecord/' enctype="multipart/form-data")
+      form(method='POST'  action='/admin/bands/addRecord/' enctype="multipart/form-data")
         input(type='hidden' name ='_method' value='put')
         input(type='hidden' name ='bid' value=band.bid)
         br
         each a in band.albums
           li.form-control=a.name+" "+a.year
-             a(href='/bands/deleteRecord/'+a.rid+'/'+band.bid)
+             a(href='/admin/bands/deleteRecord/'+a.rid+'/'+band.bid)
                i.glyphicon.glyphicon-remove.mint
         input.lfloat(type='text' size=2 name='order' value=countSongs)
         input.lfloat(type='text', name='title' size=20)

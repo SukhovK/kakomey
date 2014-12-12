@@ -1,36 +1,33 @@
+var login    = require('./login');
 exports.route = function(app, controller) {
   //  prefix = '/' + prefix;
   
     var controllerObject = require('./controllers/' + controller);
 	//console.log('/'+controller);
 	//console.log(controllerObject.addForm);
-	app.get('/'+controller + '/admin/add', controllerObject.addForm);
-	app.post('/'+controller + '/admin/add', controllerObject.create);
+	app.get('/admin/'+controller + '/add', controllerObject.addForm);
+	app.post('/admin/'+controller + '/add', controllerObject.create);
 	app.get('/'+controller+'/', controllerObject.index);
-	//app.get('/'+controller+'/admin/', controllerObject.adminIndex);
+	app.get('/admin/'+controller+'/',login.ensureAuthenticated , controllerObject.adminIndex);
 	//console.log(controller);
 	app.get('/'+controller + '/:id', controllerObject.show);
 	
-	app.get('/'+controller + '/admin/del/:id', controllerObject.deleteForm);
-	app.del('/'+controller + '/admin/del', controllerObject.delete);
+	app.get('/admin/'+controller + '/del/:id', controllerObject.deleteForm);
+	app.del('/admin/'+controller + '/del', controllerObject.delete);
 		
-	app.get('/'+controller + '/admin/edit/:id', ensureAuthenticated, controllerObject.editForm);
-	app.put('/'+controller + '/edit', controllerObject.edit);
-	app.put('/'+controller + '/admin/setPic', controllerObject.setPic);
+	app.get('/admin/'+controller + '/edit/:id', login.ensureAuthenticated, controllerObject.editForm);
+	app.put('/admin/'+controller + '/edit', controllerObject.edit);
+	app.put('/admin/'+controller + '/setPic', controllerObject.setPic);
 	// records
 	if(controller == 'records'){
-	    app.put('/records/addSong', controllerObject.addSong);
+	    app.put('/admin/records/addSong', controllerObject.addSong);
 	}
     // bands
 	if(controller == 'bands'){
 	    app.put('/admin/bands/addMember', controllerObject.addMember);
-		app.get('/admin/bands/deleteMember/:aid/:bid', controllerObject.deleteMember);
+	    app.get('/admin/bands/deleteMember/:aid/:bid', controllerObject.deleteMember);
 	    app.put('/admin/bands/addRecord', controllerObject.addRecord);
-		app.get('/admin/bands/deleteRecord/:rid/:bid', controllerObject.deleteRecord);
+	    app.get('/admin/bands/deleteRecord/:rid/:bid', controllerObject.deleteRecord);
 		//app.get('/bands/deleteRecord/:aid/:bid', controllerObject.deleteRecord);
 	}
 };
-function ensureAuthenticated(req, res, next) {
-	if (req.isAuthenticated()) { return next(); }
-	res.redirect('/login')
-}

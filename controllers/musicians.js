@@ -18,6 +18,15 @@ exports.index = function(req, res) {
 		}
 	});
 };
+exports.adminIndex  = function(req, res) {
+   BandModel.find({},function (err, bands) {
+    if (!err) {
+           res.render('bands/band_admin', {title:'Bands',bandsList: bands});
+        } else {
+	  console.log(err);
+		}
+	});
+};
 // вывод информации о музыканте
 exports.show = function(req, res) {
     var id = req.params.mid;
