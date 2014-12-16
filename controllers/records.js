@@ -2,7 +2,6 @@
 var fs = require('fs');
 exports.index = function(req, res) {
    RecordModel.find({},function (err, records) {
-  // console.log(records)
 	    if (!err) {
            res.render('records/record_list', {title:'Records',recordsList: records});
         } else {
@@ -11,11 +10,13 @@ exports.index = function(req, res) {
 	});
 };
 exports.adminIndex  = function(req, res) {
-   BandModel.find({},function (err, bands) {
-    if (!err) {
-           res.render('bands/band_admin', {title:'Bands',bandsList: bands});
+console.log("yes");
+    RecordModel.find({},function (err, records) {
+        console.log(records)
+	    if (!err) {
+           res.render('records/record_admin', {title:'Records',recordsList: records});
         } else {
-	  console.log(err);
+		   console.log(err);
 		}
 	});
 };
@@ -68,10 +69,12 @@ RecordModel.find().sort({rid: -1}).findOne(function (err, record) {
 };
 // подтвеждение удаления группы
 exports.deleteForm = function(req, res){
-    var id = req.params.bid
-    BandModel.find({bid:id},function (err, band) {
+    var rid = req.params.id
+	console.log(req.params);
+    RecordModel.find({rid:rid},function (err, record) {
+	console.log(record);
 	    if (!err) {
-			res.render('bands/delete_form',{band: band[0]});
+			res.render('records/delete_form',{record: record[0]});
         } else {
 		    console.log(err);
 		}
@@ -79,11 +82,11 @@ exports.deleteForm = function(req, res){
 }
 // удаление группы
 exports.delete = function(req, res){
-    var id = req.body.bid;	
-	BandModel.remove({bid:id}, function(err){
+    var id = req.body.rid;	
+	RecordModel.remove({rid:id}, function(err){
 		if (!err) {
-			console.log('Группа удалена');
-			res.redirect('/bands/');
+			console.log('Запись удалена');
+			res.redirect('/admin/records/');
         } else {
 		    console.log(err);
 		}

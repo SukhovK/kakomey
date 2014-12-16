@@ -2,11 +2,11 @@
 
 block content
   div
-    form(method='POST' action='/bands/del') Удалить группу
+    form(method='POST' action='/admin/records/del') Удалить 
       input(type='hidden' name ='_method' value='delete')
-      input(type='hidden' name ='bid' value=band.bid)
+      input(type='hidden' name ='rid' value=record.rid)
       br
-      div #{band.name}?
+      div #{record.title}?
       br
       input(type='submit')
-  a(href='/bands/') Назад
+  a(href='/admin/records/') Назад

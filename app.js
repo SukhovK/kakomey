@@ -51,9 +51,7 @@ app.use(function(req, res, next){
 
 app.use(function(err, req, res, next) {
   if(err){
-    console.log('oi');
     res.send(err.message);
-    console.log('oioioi');
   }
 });
 
