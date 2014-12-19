@@ -7,7 +7,7 @@ var users= [
 {userid:1, username: 'user', password: 'usPass'}];
 
 passport.use(new LocalStrategy(
-  function(username, password, done) { 
+  function(username, password, done) {
   console.log("tttt"+users.length);
 	for(var i=0; i <= users.length; i++){
 	  console.log(users[i]);
@@ -40,7 +40,8 @@ passport.deserializeUser(function(id, done) {
 module.exports.ensureAuthenticated =  function ensureAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) { return next(); }
 	  var pathname = url.parse(req.url).pathname;
-	  pathname = "|admin|bands|";
-	  console.log("Получен запрос " + pathname);	  
-	  res.redirect('/login/'+pathname);
+      req.session.url = pathname;
+
+      console.log("Получен запрос " + pathname);
+	  res.redirect('/login'+pathname);
 }

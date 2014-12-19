@@ -17,25 +17,23 @@ var crypto = require('crypto');
 }); */
 
 var app = express();
+
 app.configure(function(){
     app.set('view engine', 'jade');
     app.set('view options', { layout: true });
     app.set('views', __dirname + '/views');	
     app.use(express.favicon());
 	//app.use(express.logger());
-    
     app.use(express.bodyParser());
     app.use(express.methodOverride());
-    
-    //app.use(express.cookieDecoder());
-   app.use(session({
+    app.use(express.cookieParser());
+    app.use(session({
 		secret: 'keyboard cat',
 		resave: false,
 		saveUninitialized: true
 	}));  
-   app.use(passport.initialize());
-   app.use(passport.session());
-
+    app.use(passport.initialize());
+    app.use(passport.session());
     app.use(app.router);
     app.use(lessMiddleware(__dirname + '/views', {
        dest: __dirname + '/public'
@@ -59,7 +57,6 @@ app.configure('development', function(){
     app.use(express.errorHandler());
 });
 
-
 app.get('/', function(req, res) {
    console.log("stop45");
    var BandModel    = require('./models/bands').BandModel;
@@ -77,7 +74,7 @@ app.get('/login', function(req, res){
   res.render('login', { title: 'authenticate', username: username, message: 'error' });
 });
 
-app.get('/login/:url', function(req, res){
+app.get('/login/*', function(req, res){
   console.log("testu");
   var username = req.username ? req.user.username : '';
   res.render('login', { title: 'authenticate', username: username, message: 'error' });
