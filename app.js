@@ -83,7 +83,7 @@ app.get('/login/*', function(req, res){
 app.post('/login',
   passport.authenticate('local', { failureRedirect: '/login'}),
   function(req, res) {
-    res.redirect('/bands/');
+    res.redirect(req.session.url);
 });
 
 app.get('/logout', function(req, res){

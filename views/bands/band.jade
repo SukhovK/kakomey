@@ -27,7 +27,7 @@ block content
         li
           img.img-thumbnail(src="/images/covers/tumbs/"+a.rid+"R"+covers[a.rid], width="60px")
           &nbsp;
-          a(href='/records/'+a.rid)=a.name+" "+covers[a.year]
+          a(href='/records/'+a.rid)=a.title+" "+a.year
     div.col-md-7.tab-pane.fade(role="tabpanel"  id="mem")
       each m in band.members
         li

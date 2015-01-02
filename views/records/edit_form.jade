@@ -3,7 +3,7 @@
 block content
   div.row
     div.col-md-6
-      form(method='POST'  action='/records/edit/' enctype="multipart/form-data")
+      form(method='POST'  action='/admin/records/edit/' enctype="multipart/form-data")
         input(type='hidden' name ='_method' value='put')
         input(type='hidden' name ='rid' value=record.rid)
         br
@@ -27,7 +27,7 @@ block content
         br
         input.btn.btn-success(type='submit')
     div.col-md-4
-      form.control-group(method='POST'  action='/records/setPic/' enctype="multipart/form-data")
+      form.control-group(method='POST'  action='/admin/records/setPic/' enctype="multipart/form-data")
         input(type='hidden' name ='_method' value='put')
         input(type='hidden' name ='rid' value=record.rid)
         br
@@ -38,13 +38,13 @@ block content
         input(type='file' name ='cover')=members
         br
         input(type='submit')
-      form(method='POST'  action='/records/addSong')
+      form(method='POST'  action='/admin/records/addSong')
         input(type='hidden' name ='_method' value='put')
         input(type='hidden' name ='rid' value=record.rid)
         br
         each s in record.songs
           li.form-control=s.order+" "+s.title+" "+s.time
-            a(href='/bands/del/'+s.order)
+            a(href='/admin/bands/del/'+s.order)
               i.glyphicon.glyphicon-remove.mint
               div.row
         div.col-md-4
@@ -52,4 +52,4 @@ block content
           input(type='text', name='title')
           input.input-small(type='text' size=5 name='time')
           input(type='submit')
-  a(href='/bands/') Назад
+  a(href='/admin/bands/') Назад

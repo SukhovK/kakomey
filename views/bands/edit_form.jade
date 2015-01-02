@@ -52,7 +52,7 @@ block content
         input(type='hidden' name ='bid' value=band.bid)
         br
         each a in band.albums
-          li.form-control=a.name+" "+a.year
+          li.form-control=a.title+" "+a.year
              a(href='/admin/bands/deleteRecord/'+a.rid+'/'+band.bid)
                i.glyphicon.glyphicon-remove.mint
         input.lfloat(type='text' size=2 name='order' value=countSongs)

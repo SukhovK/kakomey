@@ -9,7 +9,7 @@ var BandSchema = new mongoose.Schema( {
 		short: {type: String},
 		history: {type: String},
         members:[{aid: Number, name: String}],
-		albums:[{rid: Number, name: String, year: Number, order:Number}]
+		albums:[{rid: Number,title: String, year: Number, cover: String, order:Number}]
     });
 
 	

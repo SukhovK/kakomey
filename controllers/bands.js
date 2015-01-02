@@ -3,9 +3,9 @@ var fs = require('fs');
 exports.index = function(req, res) {
    BandModel.find({},function (err, bands) {
     if (!err) {
-           res.render('bands/band_list', {title:'Bands',bandsList: bands});
+            res.render('bands/band_list', {title:'Bands',bandsList: bands});
         } else {
-	  console.log(err);
+			console.log(err);
 		}
 	});
 };
@@ -30,13 +30,13 @@ exports.show = function(req, res) {
 	    if (!err) {
 			var RecordModel    = require('../models/records').RecordModel;
 			//////////////////////////////////////////////////
-			RecordModel.find({bid:band.bid},function (err, records) {
+			RecordModel.find({group:band[0].name},function (err, records) {
 				//console.log(records);
 				var covers = [];
 				records.forEach(function(item){
 					var cover =    item.cover					
 				    covers[item.rid] = cover;
-				//console.log(item.cover);
+				    console.log(item);
 				});
 				res.render('bands/band', {title:'Bands',band: band[0], covers:covers});
 			});
@@ -115,14 +115,11 @@ exports.editForm = function(req, res){
 				}
 		    }
 			var albums=[];
-			// console.log(group.albums);
-		    for(i=0; i < group.albums.length; i++){
-			    albums.push(group.albums[i].name+'|'+group.albums[i].year);
-		    }
+			console.log(group.albums);
+
 		    res.render('bands/edit_form',
 			          {band: group, 
-					         members: persons, 
-							 albums: albums.join('\n')});
+					         members: persons});
         } else {
 		    console.log(err);
 	    }
@@ -200,7 +197,7 @@ exports.addMember  = function(req, res){
 							BandModel.update({bid:bid}, updateBand, function(err,data){
 								if (!err) {		
 									console.log("Данные сохранены");
-									res.redirect('/bands/edit/'+bid);			
+									res.redirect('/admin/bands/edit/'+bid);			
 								} else {
 									console.log(err);
 								}
@@ -250,11 +247,12 @@ exports.addRecord  = function(req, res){
 					rid: record.rid + 1,
 					title: req.body.title,
 					year: req.body.year,
-					order: req.body.order					
+					order: req.body.order			
 				};
-				console.log(newRecord);
+				
 				var disk = newRecord;
-				disk.group =  band.name;
+				disk.group =  band[0].name;
+				console.log(disk);
 				Record = new RecordModel(disk);
 				Record.save(function(err,data){
 					if (!err) {		
@@ -265,7 +263,7 @@ exports.addRecord  = function(req, res){
 							BandModel.update({bid:bid}, updateBand, function(err,data){
 								if (!err) {		
 									console.log("Данные сохранены");
-									res.redirect('/bands/edit/'+bid);			
+									res.redirect('/admin/bands/edit/'+bid);			
 								} else {
 									console.log(err);
 								}
@@ -280,23 +278,24 @@ exports.addRecord  = function(req, res){
 exports.deleteRecord  = function(req, res){
     var bid = req.params.bid;
 	var rid = req.params.rid;
-	console.log(rid);
+
 		BandModel.find({bid:bid},function(err,band){ 	
-			var records = band[0].records;
+			console.log(band);
+			var records = band[0].albums;
 			console.log(records);
-			for(j=0;j < members.length; j++){
-			    if(members[j].aid == aid){	
-					members.splice(j,1);
+			for(j=0;j < records.length; j++){
+			    if(records[j].rid == rid){	
+					records.splice(j,1);
 				}			    
 			}
-			console.log(members);
+			console.log(records);
 			updateBand = {
-				members : members
+				albums : records
 			} 
-      BandModel.update({bid:bid}, updateBand, function(err,data){
+		BandModel.update({bid:bid}, updateBand, function(err,data){
   	    if (!err) {		
 				console.log("Данные сохранены");
-				res.redirect('/bands/edit/'+bid);			
+				res.redirect('/admin/bands/edit/'+bid);			
 			} else {
 				console.log(err);
 			} 

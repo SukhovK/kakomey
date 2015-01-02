@@ -6,7 +6,7 @@ var RecordSchema = new mongoose.Schema( {
         title: { type: String},
 		cover: {type: String},
         year: {type: String},
-		group: {type: String}, // todo - object
+		group: {bid:Number, name: String}, // todo - object
 		lable: {type: String},
 		review: {type: String},
         members:[{aid: Number, name: String, role:Array}],

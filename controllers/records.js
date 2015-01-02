@@ -159,14 +159,21 @@ exports.setPic = function(req, res){
     fs.renameSync(src, path);
 	var imagic = require('imagemagick');
 	//Ресайзим
-    imagic.resize({ srcPath: path, dstPath: tumb, width: 100, filter: 'Point' }, function(err, stdout, stderr){
-        if (err) throw err;
-    });
+    imagic.resize({ srcPath: path, dstPath: tumb, width: 100, filter: 'Point' }, 
+				function(err, stdout, stderr){
+					if (err) throw err;
+					else {
+						console.log(tumb);
+						var BandModel    = require('../models/bands').BandModel;
+						BandModel.find({bid:bid},function(err,band){
+							
+						});
+					}
+				});
 	var updateRecord = {
-      rid: rid,
-	  cover: req.files.cover.name
-    };
-	
+		rid: rid,
+		cover: req.files.cover.name
+	};	
 	RecordModel.update({rid:rid}, updateRecord, function(err,data){
   	    if (!err) {
             console.log(updateRecord);
@@ -179,7 +186,6 @@ exports.setPic = function(req, res){
 	
 }
 exports.addSong  = function(req, res){
-
     var rid = req.body.rid;
 	var newSong = {
 	  rid: rid,
@@ -195,7 +201,7 @@ exports.addSong  = function(req, res){
       RecordModel.update({rid:rid}, updateRecord, function(err,data){
   	    if (!err) {		
             console.log("Данные сохранены");
-			res.redirect('/records/'+rid);			
+			res.redirect('/admin/records/edit/'+rid);			
         } else {
 		    console.log(err);
 		}
