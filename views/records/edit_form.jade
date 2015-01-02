@@ -13,7 +13,7 @@ block content
         br
         b Группа
         br
-        input.form-control(type='text' name ='group' value=record.group)
+        input.form-control(type='text' name ='group' value=record.group.name)
         br
         b Состав
         br
@@ -30,6 +30,7 @@ block content
       form.control-group(method='POST'  action='/admin/records/setPic/' enctype="multipart/form-data")
         input(type='hidden' name ='_method' value='put')
         input(type='hidden' name ='rid' value=record.rid)
+		input(type='hidden' name ='bid' value=record.group.bid)
         br
         b Фото
         br
