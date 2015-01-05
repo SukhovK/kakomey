@@ -98,12 +98,10 @@ exports.editForm = function(req, res){
     RecordModel.find({rid:rid},function (err, record) {
 	    if (!err) {
             var record = record[0];
-			//console.log(record);
 	        if(!fs.existsSync('public/images/covers/'+rid+'R'+record.cover)){
 		        record.cover = 'disc.jpg';
 		    }
             var countSongs = record.songs.lenght;
-			console.log(record.songs.lenght);
 		    var persons=[];
 		    for(i=0; i < record.members.length; i++){
 			    persons.push(record.members[i].name);
@@ -154,19 +152,39 @@ exports.edit = function(req, res){
 exports.setPic = function(req, res){
     var rid = req.body.rid;
     var src = req.files.cover.path;
+	var bid = req.body.bid;
 	var path = "public/images/covers/"+rid+"R"+req.files.cover.name;
-	var tumb = "public/images/covers/tumbs/"+rid+"R"+req.files.cover.name;
+	var tumb = "images/covers/tumbs/"+rid+"R"+req.files.cover.name;
     fs.renameSync(src, path);
 	var imagic = require('imagemagick');
-	//Ресайзим
-    imagic.resize({ srcPath: path, dstPath: tumb, width: 100, filter: 'Point' }, 
+	//Ресайзим TODO - to RecordModel.update
+    imagic.resize({ srcPath: path, dstPath: 'public/'+tumb, width: 100, filter: 'Point' }, 
 				function(err, stdout, stderr){
 					if (err) throw err;
 					else {
-						console.log(tumb);
+						console.log('public/'+tumb);
 						var BandModel    = require('../models/bands').BandModel;
 						BandModel.find({bid:bid},function(err,band){
+						var albums = [];
+						band[0].albums.forEach(function(record){
 							
+							if(record.rid == rid){
+								console.log(record.title);
+								record.cover = tumb;
+							}
+							albums.push(record);
+						});
+						updateBand = {
+							albums: albums
+						}
+						BandModel.update({bid:bid}, updateBand, function(err,data){
+							if (!err) {		
+								console.log("Данные сохранены");		
+							} else {
+								console.log(err);
+							}
+						});
+
 						});
 					}
 				});
@@ -178,7 +196,7 @@ exports.setPic = function(req, res){
   	    if (!err) {
             console.log(updateRecord);
 			console.log("Данные сохранены");
-	        res.redirect('/records/');			
+	        res.redirect('/admin/records/edit/'+rid);			
         } else {
 		    console.log(err);
         }

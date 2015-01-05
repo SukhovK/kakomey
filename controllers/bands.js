@@ -26,7 +26,6 @@ exports.show = function(req, res) {
 	    if(!fs.existsSync('public/images/main/'+band[0].mainImage)){
 		    band[0].mainImage = 'main.jpg';
 		}
-		// console.log(band);
 	    if (!err) {
 			var RecordModel    = require('../models/records').RecordModel;
 			//////////////////////////////////////////////////
@@ -251,7 +250,7 @@ exports.addRecord  = function(req, res){
 				};
 				
 				var disk = newRecord;
-				disk.group =  band[0].name;
+				disk.group = {bid:bid, name:band[0].name};
 				console.log(disk);
 				Record = new RecordModel(disk);
 				Record.save(function(err,data){

@@ -10,7 +10,7 @@ block content
             a(href='/records/'+recordsList[r].rid)
               img.img-rounded(src="/images/covers/tumbs/"+recordsList[r].rid+"R"+recordsList[r].cover, width="40px")
               &nbsp;
-              =recordsList[r].title+" ("+recordsList[r].group+") "+recordsList[r].year
+              =recordsList[r].title+" ("+recordsList[r].group.name+") "+recordsList[r].year
           div.col-md-1
             a(href='/admin/records/edit/'+recordsList[r].rid)
               i.glyphicon.glyphicon-edit
