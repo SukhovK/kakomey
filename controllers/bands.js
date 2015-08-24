@@ -26,16 +26,20 @@ exports.show = function(req, res) {
 	    if(!fs.existsSync('public/images/main/'+band[0].mainImage)){
 		    band[0].mainImage = 'main.jpg';
 		}
+        console.log("test");
 	    if (!err) {
 			var RecordModel    = require('../models/records').RecordModel;
 			//////////////////////////////////////////////////
-			RecordModel.find({group:band[0].name},function (err, records) {
-				//console.log(records);
+			RecordModel.find({"group.name":band[0].name},function (err, records) {
+              //  console.log(band[0].name);
+              //  console.log(band[0].bid);
+			//	console.log(records);
 				var covers = [];
 				records.forEach(function(item){
 					var cover =    item.cover					
 				    covers[item.rid] = cover;
-				    console.log(item);
+				  //  console.log(item);
+                    console.log(item.cover);
 				});
 				res.render('bands/band', {title:'Bands',band: band[0], covers:covers});
 			});
