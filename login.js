@@ -4,7 +4,8 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var users= [
 {userid:0, username: 'admin', password: 'myPass'},
-{userid:1, username: 'user', password: 'usPass'}];
+{userid:1, username: 'user', password: 'usPass'}
+];
 
 passport.use(new LocalStrategy(
   function(username, password, done) {

@@ -65,7 +65,7 @@ exports.create = function(req, res) {
     Band.save(function(err,data){
   	    if (!err) {
             console.log("Данные сохранены");
-			res.redirect('/bands/');
+						res.redirect('/admin/bands/edit/');
         } else {
 		    console.log(err);
 		}
