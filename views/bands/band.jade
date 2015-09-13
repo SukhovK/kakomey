@@ -25,7 +25,7 @@ block content
     div.col-md-7.tab-pane.fade(role="tabpanel"  id="rec")
       each a in band.albums
         li
-          img.img-thumbnail(src='/'+a.cover, width="60px")
+          img.img-thumbnail(src='/images/covers/tumbs/'+band.bid+'/'+covers[a.rid], width="60px")
           &nbsp;
           a(href='/records/'+a.rid)=a.title+" "+a.year
     div.col-md-7.tab-pane.fade(role="tabpanel"  id="mem")

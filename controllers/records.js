@@ -149,20 +149,31 @@ exports.edit = function(req, res){
 		}
   }); 
 }
+
 exports.setPic = function(req, res){
+
     var rid = req.body.rid;
     var src = req.files.cover.path;
 	var bid = req.body.bid;
-	var path = "public/images/covers/"+rid+"R"+req.files.cover.name;
-	var tumb = "images/covers/tumbs/"+rid+"R"+req.files.cover.name;
+    var mainDir = "public/images/covers/"+bid+"/";
+    if(!fs.existsSync(mainDir)) {
+        fs.mkdirSync(mainDir);
+        fs.mkdirSync(mainDir+"tumbs/");
+    }
+	var path = mainDir+req.files.cover.name;;
+	var tumb = mainDir+"tumbs/"+req.files.cover.name;
     fs.renameSync(src, path);
+
 	var imagic = require('imagemagick');
 	//Ресайзим TODO - to RecordModel.update
-    imagic.resize({ srcPath: path, dstPath: 'public/'+tumb, width: 100, filter: 'Point' }, 
+    imagic.resize({ srcPath: path, dstPath:tumb, width: 100, filter: 'Point' },
 				function(err, stdout, stderr){
-					if (err) throw err;
+					if (err){
+                        console.log("oi");
+                        console.log(err);
+                    }
 					else {
-						console.log('public/'+tumb);
+						console.log(mainDir+"tumbs/");
 						var BandModel    = require('../models/bands').BandModel;
 						BandModel.find({bid:bid},function(err,band){
 						var albums = [];
