@@ -91,6 +91,7 @@ exports.deleteForm = function(req, res){
 }
 // удаление группы
 exports.delete = function(req, res){
+
     var bid = req.body.bid;
     console.log(bid);	
 	BandModel.remove({bid:bid}, function(err){
@@ -204,7 +205,7 @@ exports.addMember  = function(req, res){
 								} else {
 									console.log(err);
 								}
-							});  
+							});
 						//});						
 					}
 				});	

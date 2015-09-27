@@ -15,7 +15,7 @@ block content
   br
   div.row.tab-content
     div.col-md-7.tab-pane.fade.in.active(role="tabpanel"  id="bio")
-      img.rfloat.img-rounded(src="/images/covers/"+record.rid+"R"+record.cover, width="180px")
+      img.rfloat.img-rounded(src="/images/covers/"+record.group.name+"/"+record.cover, width="180px")
       |#{record.review}
     div.col-md-7.tab-pane.fade(role="tabpanel"  id="rec")
       img.rfloat.img-rounded(src="/images/covers/"+record.rid+"R"+record.cover, width="180px")

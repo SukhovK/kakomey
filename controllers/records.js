@@ -98,9 +98,9 @@ exports.editForm = function(req, res){
     RecordModel.find({rid:rid},function (err, record) {
 	    if (!err) {
             var record = record[0];
-	        if(!fs.existsSync('public/images/covers/'+rid+'R'+record.cover)){
-		        record.cover = 'disc.jpg';
-		    }
+	     //   if(!fs.existsSync('public/images/covers/'+rid+'R'+record.cover)){
+		//        record.cover = 'disc.jpg';
+		 //   }
             var countSongs = record.songs.lenght;
 		    var persons=[];
 		    for(i=0; i < record.members.length; i++){

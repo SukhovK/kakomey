@@ -60,11 +60,15 @@ app.configure('development', function(){
 app.get('/', function(req, res) {
    console.log("stop45");
    var BandModel    = require('./models/bands').BandModel;
+    console.log(BandModel);
       BandModel.find({},function (err, bands) {
 		if (!err) {
 			bands=snifle(bands);
+            console.log("stop4");
 			res.render('index', {title:'Bands',bandsList: bands});
-		}
+		} else {
+            console.log("st7");
+        }
       });
 });
 

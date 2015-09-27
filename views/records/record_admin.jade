@@ -8,7 +8,7 @@ block content
         div.row
           div.col-md-8
             a(href='/records/'+recordsList[r].rid)
-              img.img-rounded(src="/images/covers/tumbs/"+recordsList[r].rid+"R"+recordsList[r].cover, width="40px")
+              img.img-rounded(src="/images/covers/"+recordsList[r].group.bid+"/tumbs/"+recordsList[r].cover, width="40px")
               &nbsp;
               =recordsList[r].title+" ("+recordsList[r].group.name+") "+recordsList[r].year
           div.col-md-1

@@ -53,4 +53,18 @@ block content
           input(type='text', name='title')
           input.input-small(type='text' size=5 name='time')
           input(type='submit')
+      form(method='POST'  action='/admin/records/addSong')
+        input(type='hidden' name ='_method' value='put')
+        input(type='hidden' name ='rid' value=record.rid)
+        br
+        each s in record.songs
+          li.form-control=s.order + " " + s.title + " " + s.time
+            a(href='/admin/bands/del/' + s.order)
+              i.glyphicon.glyphicon-remove.mint
+              div.row
+        div.col-md-4
+          input.input-small(type='text' size=2 name='order' value=countSongs)
+          input(type='text', name='title')
+          input.input-small(type='text' size=5 name='time')
+          input(type='submit')
   a(href='/admin/bands/') Назад
