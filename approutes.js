@@ -21,6 +21,9 @@ exports.route = function(app, controller) {
 	// records
 	if(controller == 'records'){
 	    app.put('/admin/records/addSong', controllerObject.addSong);
+		app.get('/admin/records/deleteSongr/:sid/:rid', controllerObject.deleteSong);
+		app.put('/admin/records/addMember', controllerObject.addMember);
+		app.get('/admin/records/deleteMember/:aid/:rid', controllerObject.deleteMember);
 	}
     // bands
 	if(controller == 'bands'){
@@ -28,6 +31,5 @@ exports.route = function(app, controller) {
 	    app.get('/admin/bands/deleteMember/:aid/:bid', controllerObject.deleteMember);
 	    app.put('/admin/bands/addRecord', controllerObject.addRecord);
 	    app.get('/admin/bands/deleteRecord/:rid/:bid', controllerObject.deleteRecord);
-		//app.get('/bands/deleteRecord/:aid/:bid', controllerObject.deleteRecord);
 	}
 };

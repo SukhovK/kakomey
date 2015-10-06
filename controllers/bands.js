@@ -218,13 +218,12 @@ exports.addMember  = function(req, res){
 exports.deleteMember  = function(req, res){
     var bid = req.params.bid;
 	var aid = req.params.aid;
-	console.log(aid);
 		BandModel.find({bid:bid},function(err,band){ 	
 			var members = band[0].members;
 			console.log(members);
 			for(j=0;j < members.length; j++){
 			    if(members[j].aid == aid){	
-					members.splice(j,1);
+
 				}			    
 			}
 			console.log(members);

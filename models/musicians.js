@@ -11,9 +11,15 @@ var MusicianSchema = new mongoose.Schema( {
         groups:[{bid: Number, name: String}]   
     });
 
-MusicianSchema.statics.getLastBid = function (){
-    var coll =this.find({}).sort({'bid': -1}).limit(1);
-	console.log(coll.bid);
+MusicianSchema.methods.getLastAid1 = function (){
+    this.model('Musician').find({}).sort({aid: -1}).findOne(function (err, person) {
+        console.log(person.aid+"ffff");
+        return person.aid;
+    });
+}
+MusicianSchema.methods.getLastAid = function (cb){
+    return this.model('Musician').find({}).sort({aid: -1}).findOne(cb);
+ //   return this.model('Musician').find({}, cb);
 }
 var MusicianModel =  db.model('Musician', MusicianSchema);
 module.exports.MusicianModel = MusicianModel;

@@ -1,4 +1,5 @@
 ﻿var RecordModel    = require('../models/records').RecordModel;
+var async = require('async');
 var fs = require('fs');
 exports.index = function(req, res) {
    RecordModel.find({},function (err, records) {
@@ -12,7 +13,7 @@ exports.index = function(req, res) {
 exports.adminIndex  = function(req, res) {
 console.log("yes");
     RecordModel.find({},function (err, records) {
-        console.log(records)
+        console.log(records);
 	    if (!err) {
            res.render('records/record_admin', {title:'Records',recordsList: records});
         } else {
@@ -119,24 +120,13 @@ exports.editForm = function(req, res){
 // сохранение
 exports.edit = function(req, res){
   var rid = req.body.rid;
-  /* var bandAlbums = [];
-  var albums = req.body.albums.split('\n');
-  albums.forEach(function(item){
-      var realise = item.split('|');
-      var album = {
-	          name: realise[0], 
-		      uid: "",
-			  year: realise[1]
-		  }
-  bandAlbums.push(album); 
 
-  }); */
-    var updateRecord = {
+  var updateRecord = {
       rid: rid,
       title: req.body.title,
 	  year: req.body.year,
-	  group: req.body.group,
-	  review: req.body.review,
+	 // group: req.body.group, TODO: group
+	  review: req.body.review
   };
   
   console.log('control1');
@@ -173,7 +163,6 @@ exports.setPic = function(req, res){
                         console.log(err);
                     }
 					else {
-						console.log(mainDir+"tumbs/");
 						var BandModel    = require('../models/bands').BandModel;
 						BandModel.find({bid:bid},function(err,band){
 						var albums = [];
@@ -236,4 +225,115 @@ exports.addSong  = function(req, res){
 		}
       });  
   });	
+}
+exports.deleteSong  = function(req, res){
+
+}
+exports.addMember  = function(req, res){
+	var rid = req.body.rid;
+	var name = req.body.name;
+	async.waterfall([
+		function (callback){
+			callback(null, name);
+		},
+        function (name, callback){
+            var MusicianModel    = require('../models/musicians').MusicianModel;
+            MusicianModel.find({'name': name}, function(err, person) {
+                callback(null, person, MusicianModel);
+            });
+        },
+		function (person, MusicianModel, callback){
+            if(person.length > 0 ){
+					var aid = person[0].aid;
+                    callback(null, person);
+
+                } else {
+                    var newMusicion = {
+                        name: name
+                    };
+                    var newPerson = new MusicianModel(newMusicion);
+                    newPerson.getLastAid(function(err, p){
+                        if(err){
+                            console.log(err);
+                        }
+                        newMusicion.aid = p.aid + 1;
+                        callback(newMusicion, aid);
+                    });
+                }
+		},
+		function (person, callback){
+			var newMember = {
+				aid: person.aid,
+				name: person.name,
+				role: [req.body.role]
+			};
+			RecordModel.find({rid:rid},function(err,record){
+				record[0].members.push(newMember);
+				updateRecord = {
+					members : record[0].members
+				}
+				RecordModel.update({rid:rid}, updateRecord, function(err,data){
+					if (!err) {
+                        callback(null, 'done');
+					} else {
+						console.log(err);
+					}
+				});
+			});
+		}
+	], function (err, result) {
+		if (!err) {
+			res.redirect('/admin/records/edit/'+rid);
+		} else {
+			console.log(err);
+		}
+	});
+}
+exports.deleteMember  = function(req, res){
+	var rid = req.params.rid;
+	var aid = req.params.aid;
+	RecordModel.find({rid:rid},function(err,record) {
+		var members = record[0].members;
+		for (j = 0; j < members.length; j++) {
+			if (members[j].aid == aid) {
+				members.splice(j, 1);
+			}
+            if (members[j].aid == undefined) {
+                members.splice(j, 1);
+            }
+           // console.log(members[j].aid);
+		}
+		updateRecord = {
+			members : members
+		}
+
+		RecordModel.update({rid:rid}, updateRecord, function(err,data){
+			if (!err) {
+				res.redirect('/admin/records/edit/'+rid);
+			} else {
+				console.log(err);
+			}
+		});
+	});
+}
+
+function getMusiciansId(name){
+	var MusicianModel    = require('../models/musicians').MusicianModel;
+	MusicianModel.find({'name': name}, function(err, person){
+		if(person.length > 0 ){
+            return person[0].aid;
+		} else {
+            var newMusicion = {
+                name: name
+            };
+			var record = new MusicianModel(newMusicion);
+            record.getLastAid(function(err, p){
+				if(err){
+					console.log(err);
+				}
+				var id = p.aid + 1;
+				return id ;
+			});
+		}
+	});
 }
