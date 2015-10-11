@@ -1,5 +1,7 @@
 ﻿var BandModel    = require('../models/bands').BandModel;
 var fs = require('fs');
+var async = require('async');
+// var fs = require('fs');
 exports.index = function(req, res) {
    BandModel.find({},function (err, bands) {
     if (!err) {
@@ -140,13 +142,10 @@ exports.edit = function(req, res){
       bid: bid,
       name: req.body.name,
 	  state: req.body.state,
-      members: bandMembers,
 	  short: req.body.short,
-	  history: req.body.history,
-	 // albums: bandAlbums
+	  history: req.body.history
   };
   
-  console.log('control1');
   BandModel.update({bid:bid}, updateBand, function(err,data){
   	    if (!err) {
             console.log("Данные сохранены");
@@ -174,47 +173,71 @@ exports.setPic = function(req, res){
     });	
 }
 exports.addMember  = function(req, res){
+
 	var MusicianModel    = require('../models/musicians').MusicianModel;
     var bid = req.body.bid;
-	console.log(bid);
-	BandModel.find({bid:bid},function(err,band){
-		if(err){
-			console.log(err);
-		}
-		var band1 = band[0];
-	    MusicianModel.find().sort({aid: -1}).findOne(function (err, person) {
-	        if (!err) {	
-				var newMember = {
-					aid: person.aid + 1,
-					name: req.body.name
-				};
-				var newMusician = newMember;
-				newMusician.groups = [{bid: bid, name: band1.name}];
-				Musician = new MusicianModel(newMusician);
-				Musician.save(function(err,data){
-					if (!err) {		
-					//	BandModel.find({bid:bid},function(err,band){ 
-							band1.members.push(newMember);
-							updateBand = {
-								members : band1.members
-							}
-							BandModel.update({bid:bid}, updateBand, function(err,data){
-								if (!err) {		
-									console.log("Данные сохранены");
-									res.redirect('/admin/bands/edit/'+bid);			
-								} else {
-									console.log(err);
-								}
-							});
-						//});						
-					}
-				});	
-			
-			}
-		});	
-	});
-}
+    var name = req.body.name;
 
+	async.waterfall([
+		function (callback){
+			BandModel.find({bid:bid},function(err,band) {
+				callback(null, band[0]);
+			});
+		},
+		function (band, callback){
+			var MusicianModel    = require('../models/musicians').MusicianModel;
+			MusicianModel.find({'name': name}, function(err, person) {
+				callback(null,band, person, MusicianModel);
+			});
+		},
+        function (band, person, MusicianModel, callback){
+
+            if(person.length > 0 ){
+                person[0].groups.push({bid: bid, name: band.name});
+                updateMusician = {
+                    groups :  person[0].groups
+                }
+                MusicianModel.update({aid:person[0].aid}, updateMusician, function(){
+                    callback(null, band,  person[0]);
+
+                });
+
+            } else {
+                var newMusicion = {
+                    name: name
+                }
+                var newPerson = new MusicianModel(newMusicion);
+                newPerson.getLastAid(function(err, p){
+                    if(err){
+                        console.log(err);
+                    }
+                    newPerson.aid = p.aid + 1;
+                    newPerson.groups = [{bid: bid, name: band.name}];
+                    newPerson.save();
+                    callback(null, band, newPerson);
+                });
+            }
+        },
+        function (band, person, callback){
+            var newMember = {
+                name : person.name,
+                aid : person.aid
+            }
+            band.members.push(newMember);
+            updateBand = {
+                members : band.members
+            }
+            BandModel.update({bid:bid}, updateBand, function(err,data){
+                if (!err) {
+                    console.log("Данные сохранены");
+                    res.redirect('/admin/bands/edit/'+bid);
+                } else {
+                    console.log(err);
+                }
+            });
+        }
+    ]);
+}
 exports.deleteMember  = function(req, res){
     var bid = req.params.bid;
 	var aid = req.params.aid;
@@ -222,8 +245,8 @@ exports.deleteMember  = function(req, res){
 			var members = band[0].members;
 			console.log(members);
 			for(j=0;j < members.length; j++){
-			    if(members[j].aid == aid){	
-
+			    if(members[j].aid == aid){
+                    members.splice(j, 1);
 				}			    
 			}
 			console.log(members);

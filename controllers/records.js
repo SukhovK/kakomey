@@ -239,13 +239,15 @@ exports.addMember  = function(req, res){
         function (name, callback){
             var MusicianModel    = require('../models/musicians').MusicianModel;
             MusicianModel.find({'name': name}, function(err, person) {
+
                 callback(null, person, MusicianModel);
             });
         },
 		function (person, MusicianModel, callback){
             if(person.length > 0 ){
+                    console.log("&&");
 					var aid = person[0].aid;
-                    callback(null, person);
+                    callback(null, person[0]);
 
                 } else {
                     var newMusicion = {
@@ -256,8 +258,10 @@ exports.addMember  = function(req, res){
                         if(err){
                             console.log(err);
                         }
-                        newMusicion.aid = p.aid + 1;
-                        callback(newMusicion, aid);
+                     //   newMusicion.aid = p.aid + 1;
+                        newPerson.aid = p.aid + 1;
+                        newPerson.save();
+                        callback(null, newPerson);
                     });
                 }
 		},
@@ -273,11 +277,8 @@ exports.addMember  = function(req, res){
 					members : record[0].members
 				}
 				RecordModel.update({rid:rid}, updateRecord, function(err,data){
-					if (!err) {
-                        callback(null, 'done');
-					} else {
-						console.log(err);
-					}
+                    res.redirect('/admin/records/edit/'+rid);
+                    // callback(null, 'done');
 				});
 			});
 		}
@@ -298,10 +299,6 @@ exports.deleteMember  = function(req, res){
 			if (members[j].aid == aid) {
 				members.splice(j, 1);
 			}
-            if (members[j].aid == undefined) {
-                members.splice(j, 1);
-            }
-           // console.log(members[j].aid);
 		}
 		updateRecord = {
 			members : members
