@@ -1,17 +1,18 @@
 doctype html
-html(ng-app)
+html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/styles.css')
     script(src='/javascripts/jquery.js')
     script(src='/javascripts/bootstrap.js')
-    script(src='/javascripts/angular/angular.js')
-  body
-    div.row
-      div.col-md-4
-        img.img-circle.logo(src="/images/bands.jpg", width="180px")
-      div.col-md-8 
-        h1 Kakomey!!!
-    div.row
-      div.col-md-10.col-sm-offset-1
-        block content
+    script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js')
+    script(src='/javascripts/common.js')
+   body
+     div.row
+       div.col-md-4
+         img.img-circle.logo.right(src="/images/bands.jpg", width="180px")
+       div.col-md-8
+         h1 Kakomey!!!
+     div.row
+       div.col-md-10.col-sm-offset-1
+         block content

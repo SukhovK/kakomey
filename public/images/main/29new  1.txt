@@ -1,0 +1,33 @@
+
+SELECT DISTINCT `p`.*, `pd`.*, `f`.*, `a`.`is_client`, `a`.`author_id`, `ea`.`author_id` AS `aid`, 
+tr.author_id tid, 
+ad.name tname
+FROM `extprodauth` AS `ea` 
+LEFT JOIN `product` AS `p` ON `ea`.`product_id` = `p`.`product_id` 
+LEFT JOIN `proddescr` AS `pd` ON `p`.`product_id` = `pd`.`product_id` 
+LEFT JOIN `formular` AS `f` ON `f`.`product_id` = `p`.`product_id` 
+LEFT JOIN `exttranslater` AS `et` ON `et`.`formular_id` = `f`.`formular_id` 
+LEFT JOIN `author` AS `a` ON `et`.`author_id` = `a`.`author_id`
+
+LEFT JOIN `author` AS `tr` ON `et`.`author_id` = tr.`author_id`
+LEFT JOIN `authordescr` AS `ad` ON `tr`.`author_id` = `ad`.`author_id` AND ad.language_id =`pd`.`language_id` 
+WHERE `pd`.`language_id` = 1 AND `ea`.`author_id` = 714 GROUP BY tr.author_id,`p`.`product_id` ORDER BY `pd`.`name` ASC
+
+UNION
+				SELECT 
+		        `i`.*, `id`.*, `f`.`formular_id`, `pd`.`name` AS `pname`, `c`.`image` AS `cover`
+		        FROM 
+		        `extprodauth` AS `ea` 
+		        LEFT JOIN `formular` AS `f`          ON `ea`.`product_id`  = `f`.`product_id` 
+		        LEFT JOIN `information` AS `i`       ON `f`.`formular_id`  = `i`.`formular_id` 
+		        LEFT JOIN `informationdescr` AS `id` ON `id`.`information_id` = `i`.`information_id` 
+		        LEFT JOIN `publishdescr` AS `pd`     ON `pd`.`publishing_id` = `i`.`publishing_id` 
+		        LEFT JOIN `cover` AS `c`             ON `c`.`information_id` = `i`.`information_id` 
+		        WHERE 
+		            `id`.`language_id` = ".$this->lang." 
+		        AND `pd`.`language_id` = ".$this->lang." 
+		        AND `ea`.`author_id` = ".$author_id." 
+		        AND `c`.`is_main` = 'y' 
+		        AND `i`.`type` = 'literature' 
+                WHERE   `i`.`isbn` =''
+		        ORDER BY `i`.`date` DESC LIMIT ".$begin.", ".$limit;

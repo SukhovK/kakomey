@@ -1,7 +1,7 @@
 ﻿extends ../layout
 
 block content
-  h2  #{record.title+" "}
+  h2.page-header  #{record.title+" "}
     i  (#{record.group.name})
   div.row
     div.col-md-7
@@ -26,15 +26,10 @@ block content
       img.rfloat.img-rounded(src="/images/covers/"+record.group.bid+"/"+record.cover, width="180px")
       each m in record.members
         li
-          a(href='/records/')=m.name
+          a(href='musicians/'+m.aid)
+            if m.main
+              b=m.name
+            else
+              font=m.name
 
   hr
-ul.nav.nav-tabs
-  li a(href='#home' data-toggle='tab')Home
-  li a(href="#home1" data-toggle="tab")Home1
-  li a(href="#home2" data-toggle="tab")Home3
-div.tab-content
-  div.tab-pane.active(id="home") aaa
-  div.tab-pane(id="home1") bbbb
-  div.tab-pane(id="home2") ccccccccccccccccc
-  

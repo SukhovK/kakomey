@@ -38,7 +38,7 @@ block content
         br
         input(type='file' name ='cover')=members
         br
-        input(type='submit')
+        input.btn.btn-info(type='submit')
       form(method='POST'  action='/admin/records/addSong')
         input(type='hidden' name ='_method' value='put')
         input(type='hidden' name ='rid' value=record.rid)
@@ -51,17 +51,19 @@ block content
         input.input-small(type='text' size=2 name='order' value=countSongs)
         input(type='text', name='title')
         input.input-small(type='text' size=5 name='time')
-        input(type='submit')
+        input.btn.btn-info(type='submit')
       form(method='POST'  action='/admin/records/addMember')
         input(type='hidden' name ='_method' value='put')
         input(type='hidden' name ='rid' value=record.rid)
         br
         each m in record.members
           li.form-control=m.name
-            a(href='/admin/records/deleteMember/' + m.aid+"/"+record.rid)
+            a.right(href='/admin/records/deleteMember/' + m.aid+"/"+record.rid)
               i.glyphicon.glyphicon-remove.mint
               div.row
         input(type='text', name='name')
         input.input-small(type='text' size=5 name='role')
-        input(type='submit')
+        input(type='checkbox', name='main')
+        br
+        input.btn.btn-info(type='submit')
   a(href='/admin/bands/') Назад

@@ -3,21 +3,17 @@
 block content
   h3= title
 
-  ul.nav.nav-list
-    - for (var b in bandsList)
-      li
-        div.row
+  div.nav.nav-list.collist
+    div.row
+    - for (var b = 0; b < bandsList.length; b++)
           div.col-md-4
             a(href='/bands/'+bandsList[b].bid)
-              i.glyphicon.glyphicon-music &nbsp;
+              img.img-rounded.imglist(src='/images/main/'+bandsList[b].mainImage, width="40px",height="32px")
+              &nbsp;
+              &nbsp;
               =bandsList[b].name
-          div.col-md-1
-            a(href='/admin/bands/edit/'+bandsList[b].bid)
-              i.glyphicon.glyphicon-edit
-              &nbsp;
-              &nbsp;
-            a(href='/bands/del/'+bandsList[b].bid)
-              i.glyphicon.glyphicon-remove.mint
+              img.imgflaflist(src='/images/flags/'+bandsList[b].state+'.png', width="28px")
+
           
   a(href='/bands/add')
     i.glyphicon.glyphicon-plus

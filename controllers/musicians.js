@@ -1,15 +1,8 @@
 ﻿var MusicianModel    = require('../models/musicians').MusicianModel;
 // список музыкантов
 exports.index = function(req, res) {
-	/* MusicianModel.remove({}, function(err){
-		if (!err) {
-			console.log('Группа удалена');
-			res.redirect('/mmusicians/');
-        } else {
-		    console.log(err);
-		}
-	}); */
-   MusicianModel.find().sort({sortName: 1}).find({},function (err, musicians) {
+
+   MusicianModel.find().sort({name: 1}).find({},function (err, musicians) {
 	    if (!err) {
 			console.log(musicians);
             res.render('musicians/musician_list', {title:'Musicians',musicianList: musicians});
@@ -19,9 +12,9 @@ exports.index = function(req, res) {
 	});
 };
 exports.adminIndex  = function(req, res) {
-   BandModel.find({},function (err, bands) {
+	MusicianModel.find({},function (err, bands) {
     if (!err) {
-           res.render('bands/band_admin', {title:'Bands',bandsList: bands});
+           res.render('musicians/band_admin', {title:'Bands',bandsList: bands});
         } else {
 	  console.log(err);
 		}

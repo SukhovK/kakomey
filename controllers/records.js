@@ -266,9 +266,11 @@ exports.addMember  = function(req, res){
                 }
 		},
 		function (person, callback){
+            var main = (req.body.main == 'on');
 			var newMember = {
 				aid: person.aid,
 				name: person.name,
+                main: main,
 				role: [req.body.role]
 			};
 			RecordModel.find({rid:rid},function(err,record){

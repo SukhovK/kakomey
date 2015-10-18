@@ -5,18 +5,16 @@ var MusicianSchema = new mongoose.Schema( {
         aid: { type: Number, index: true, min: 1 },
         name: { type: String, match: /[a-z ]/},
 		sortName: { type: String, match: /[a-z ]/},
+        mainPict: {type: String},
         birth: {type: Date},
 		death: {type: Date},
 		bio: {type: String},
-        groups:[{bid: Number, name: String}]   
-    });
+        groups:[{bid: Number, name: String}],
+        albums:[{rid: Number, name: String, groupName: String}]
+});
 
-MusicianSchema.methods.getLastAid1 = function (){
-    this.model('Musician').find({}).sort({aid: -1}).findOne(function (err, person) {
-        console.log(person.aid+"ffff");
-        return person.aid;
-    });
-}
+
+
 MusicianSchema.methods.getLastAid = function (cb){
     return this.model('Musician').find({}).sort({aid: -1}).findOne(cb);
  //   return this.model('Musician').find({}, cb);

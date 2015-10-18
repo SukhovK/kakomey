@@ -14,3 +14,7 @@ exports.index = function(req, res){
 	//}
 	// next();
 //}
+/* div(ng-controller="HelloCtrl") Say Hello:
+    input(type="text" ng-model="name")
+h1 Hello, {{getName()}}!
+    Group Members */
