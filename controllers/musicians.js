@@ -1,4 +1,5 @@
 ﻿var MusicianModel    = require('../models/musicians').MusicianModel;
+var fs = require('fs');
 // список музыкантов
 exports.index = function(req, res) {
 
@@ -12,9 +13,9 @@ exports.index = function(req, res) {
 	});
 };
 exports.adminIndex  = function(req, res) {
-	MusicianModel.find({},function (err, bands) {
+	MusicianModel.find({},function (err, musicians) {
     if (!err) {
-           res.render('musicians/band_admin', {title:'Bands',bandsList: bands});
+           res.render('musicians/musician_admin', {title:'Persons', musiciansList: musicians});
         } else {
 	  console.log(err);
 		}
@@ -84,16 +85,15 @@ exports.delete = function(req, res){
         } else {
 		    console.log(err);
 		}
-	}); 
-	
+	});
 }
 // форма для редактирования
 exports.editForm = function(req, res){
     var aid = req.params.id
-	console.log(aid);
+	// console.log(aid);
     MusicianModel.find({aid:aid},function (err, person) {
 	    if (!err) {
-		    console.log(person);
+		    console.log(person[0]);
 		    res.render('musicians/edit_form',{musician: person[0]});
         } else {
 		    console.log(err);
@@ -118,17 +118,18 @@ exports.edit = function(req, res){
   }); 
 }
 exports.setPic = function(req, res){
-    var bid = req.body.bid;
+    var aid = req.body.aid;
     var src = req.files.main_pic.path;
-    fs.renameSync(src, "public/images/main/"+bid+req.files.main_pic.name);
-	var updateBand = {
-      bid: bid,
-	  mainImage: bid+req.files.main_pic.name,
+    fs.renameSync(src, "/images/musicians/"+aid+req.files.main_pic.name);
+	var updateMusician = {
+      aid: aid,
+	  mainPict: aid+req.files.main_pic.name
     };
-	BandModel.update({bid:bid}, updateBand, function(err,data){
+	MusicianModel.update({aid:aid}, updateMusician, function(err,data){
   	    if (!err) {
             console.log("Данные сохранены");
-	        res.redirect('/musicians/');			
+			console.log(data);
+	        res.redirect('/admin/musicians/'+aid);
         } else {
 		    console.log(err);
         }

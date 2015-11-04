@@ -21,4 +21,15 @@ block content
         br
         input.btn.btn-success(type='submit')
     div.col-md-4
+      form.control-group(method='POST'  action='/admin/musicians/setPic/' enctype="multipart/form-data")
+        input(type='hidden' name ='_method' value='put')
+        input(type='hidden' name ='aid' value=musician.aid)
+        br
+        b Фото
+        br
+        img(src='/images/musicians/'+ musician.mainPict, width='120px')
+        br
+        input(type='file' name ='main_pic')=members
+        br
+        input.btn.btn-info(type='submit')
   a(href='/musicians/') Назад

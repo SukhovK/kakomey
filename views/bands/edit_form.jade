@@ -1,6 +1,9 @@
 ﻿extends ../layout
 
 block content
+  script(src='/javascripts/tinymce/tinymce/js/tinymce/tinymce.min.js')
+  script tinymce.init({selector:'textarea', plugins: 'advlist autolink link image lists charmap print preview'});
+
   div.row
     div.col-md-6
       form(method='POST'  action='/admin/bands/edit/' enctype="multipart/form-data")
