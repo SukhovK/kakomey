@@ -10,7 +10,7 @@ var MusicianSchema = new mongoose.Schema( {
 		death: {type: Date},
 		bio: {type: String},
         groups:[{bid: Number, name: String}],
-        albums:[{rid: Number, name: String, groupName: String}]
+        albums:[{rid: Number, role: Array}]
 });
 
 

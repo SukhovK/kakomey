@@ -2,12 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ede95669-d19b-4a22-8081-1100a8c53b14" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\Fedor\kakomey\views\musicians\musicion_admin.jade" afterPath="$PROJECT_DIR$/views/musicians/musician_admin.jade" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/records_edit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/approutes.js" afterPath="$PROJECT_DIR$/approutes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/bands/band.jade" afterPath="$PROJECT_DIR$/views/bands/band.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/bands/band_admin.txt" afterPath="$PROJECT_DIR$/views/bands/band_admin.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/bands.js" afterPath="$PROJECT_DIR$/controllers/bands.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/bands/edit_form.jade" afterPath="$PROJECT_DIR$/views/bands/edit_form.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/musicians/edit_form.jade" afterPath="$PROJECT_DIR$/views/musicians/edit_form.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/records/edit_form.jade" afterPath="$PROJECT_DIR$/views/records/edit_form.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.jade" afterPath="$PROJECT_DIR$/views/layout.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/musicians/musician.jade" afterPath="$PROJECT_DIR$/views/musicians/musician.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/musicians.js" afterPath="$PROJECT_DIR$/controllers/musicians.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/musicians.js" afterPath="$PROJECT_DIR$/models/musicians.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/records/record.jade" afterPath="$PROJECT_DIR$/views/records/record.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/records.js" afterPath="$PROJECT_DIR$/controllers/records.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/styles.css" afterPath="$PROJECT_DIR$/public/stylesheets/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/stylesheets/variables.less" afterPath="$PROJECT_DIR$/views/stylesheets/variables.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/stylesheets/styles.less" afterPath="$PROJECT_DIR$/views/stylesheets/styles.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="c2f34cc8-91fd-476b-8989-02619446e46e" name="New changelist" comment="" />
@@ -31,53 +41,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="bands.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/bands.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="record.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/records/record.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+              <folding>
+                <marker date="1446982886728" expanded="true" signature="24:1327" placeholder="..." />
+                <marker date="1446982886728" expanded="true" signature="37:100" placeholder="..." />
+                <marker date="1446982886728" expanded="true" signature="106:526" placeholder="..." />
+                <marker date="1446982886728" expanded="true" signature="118:526" placeholder="..." />
+                <marker date="1446982886728" expanded="true" signature="136:526" placeholder="..." />
+                <marker date="1446982886728" expanded="true" signature="176:285" placeholder="..." />
+                <marker date="1446982886728" expanded="true" signature="296:407" placeholder="..." />
+                <marker date="1446982886728" expanded="true" signature="418:526" placeholder="..." />
+                <marker date="1446982886728" expanded="true" signature="537:1322" placeholder="..." />
+                <marker date="1446982886728" expanded="true" signature="561:746" placeholder="..." />
+                <marker date="1446982886728" expanded="true" signature="754:995" placeholder="..." />
+                <marker date="1446982886728" expanded="true" signature="1003:1322" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="edit_form.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/musicians/edit_form.jade">
+        <entry file="file://$PROJECT_DIR$/views/bands/edit_form.jade">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+              <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
               <folding>
-                <marker date="1445189253905" expanded="true" signature="24:1160" placeholder="..." />
-                <marker date="1445189253905" expanded="true" signature="38:1130" placeholder="..." />
-                <marker date="1445189253905" expanded="true" signature="50:666" placeholder="..." />
-                <marker date="1445189253905" expanded="true" signature="70:666" placeholder="..." />
-                <marker date="1445189253905" expanded="true" signature="674:1130" placeholder="..." />
-                <marker date="1445189253905" expanded="true" signature="694:1130" placeholder="..." />
+                <marker date="1447532132241" expanded="true" signature="24:2733" placeholder="..." />
+                <marker date="1447532132241" expanded="true" signature="375:2707" placeholder="..." />
+                <marker date="1447532132241" expanded="true" signature="387:1082" placeholder="..." />
+                <marker date="1447532132241" expanded="true" signature="407:1082" placeholder="..." />
+                <marker date="1447532132241" expanded="true" signature="1090:2707" placeholder="..." />
+                <marker date="1447532132241" expanded="true" signature="1110:1516" placeholder="..." />
+                <marker date="1447532132241" expanded="true" signature="1527:2000" placeholder="..." />
+                <marker date="1447532132241" expanded="true" signature="2011:2707" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login.js">
+      <file leaf-file-name="band_admin.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/bands/band_admin.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="192" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="314" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="musicians.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/musicians.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="122" column="24" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="musician_admin.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/musicians/musician_admin.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="80" selection-start-line="10" selection-start-column="80" selection-end-line="10" selection-end-column="80" />
-              <folding>
-                <marker date="1445189014466" expanded="true" signature="24:703" placeholder="..." />
-                <marker date="1445189014466" expanded="true" signature="49:639" placeholder="..." />
-                <marker date="1445189014466" expanded="true" signature="643:703" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -85,49 +106,78 @@
       <file leaf-file-name="edit_form.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/records/edit_form.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
+              <folding>
+                <marker date="1447689447183" expanded="true" signature="24:3306" placeholder="..." />
+                <marker date="1447689447183" expanded="true" signature="500:3274" placeholder="..." />
+                <marker date="1447689447183" expanded="true" signature="529:1276" placeholder="..." />
+                <marker date="1447689447183" expanded="true" signature="549:1276" placeholder="..." />
+                <marker date="1447689447183" expanded="true" signature="1284:3274" placeholder="..." />
+                <marker date="1447689447183" expanded="true" signature="1304:1809" placeholder="..." />
+                <marker date="1447689447183" expanded="true" signature="1819:2502" placeholder="..." />
+                <marker date="1447689447183" expanded="true" signature="1842:2502" placeholder="..." />
+                <marker date="1447689447183" expanded="true" signature="2512:3274" placeholder="..." />
+                <marker date="1447689447183" expanded="true" signature="2560:3274" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="records_edit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/records_edit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit_form.jade" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/bands/edit_form.jade">
+      <file leaf-file-name="records.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/records.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.06822262">
-              <caret line="4" column="110" selection-start-line="4" selection-start-column="110" selection-end-line="4" selection-end-column="110" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tinymce.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/tinymce/tinymce/js/tinymce/tinymce.min.js">
+      <file leaf-file-name="bands.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/controllers/bands.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="366.5">
-              <caret line="5" column="5718" selection-start-line="5" selection-start-column="5712" selection-end-line="5" selection-end-column="5718" />
+            <state vertical-scroll-proportion="0.19587629">
+              <caret line="153" column="29" selection-start-line="153" selection-start-column="29" selection-end-line="153" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tinymce.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/tinymce/js/tinymce/tinymce.min.js">
+      <file leaf-file-name="band.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/bands/band.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="671.87036">
-              <caret line="8" column="21031" selection-start-line="8" selection-start-column="21027" selection-end-line="8" selection-end-column="21031" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery.tinymce.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/tinymce/js/tinymce/jquery.tinymce.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0925926">
-              <caret line="0" column="3416" selection-start-line="0" selection-start-column="3414" selection-end-line="0" selection-end-column="3416" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+              <folding>
+                <marker date="1446883903623" expanded="true" signature="24:1001" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="38:109" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="50:109" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="68:109" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="115:252" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="127:157" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="165:252" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="258:683" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="270:683" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="288:683" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="328:441" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="452:564" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="575:683" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="694:1001" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="802:1001" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="1005:1061" placeholder="..." />
+                <marker date="1446883903623" expanded="true" signature="1069:1204" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,9 +185,18 @@
       <file leaf-file-name="layout.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/layout.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.44">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="40" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+              <folding>
+                <marker date="1447356005667" expanded="true" signature="17:458" placeholder="..." />
+                <marker date="1447356005667" expanded="true" signature="24:226" placeholder="..." />
+                <marker date="1447356005667" expanded="true" signature="234:458" placeholder="..." />
+                <marker date="1447356005667" expanded="true" signature="243:385" placeholder="..." />
+                <marker date="1447356005667" expanded="true" signature="258:342" placeholder="..." />
+                <marker date="1447356005667" expanded="true" signature="353:385" placeholder="..." />
+                <marker date="1447356005667" expanded="true" signature="394:458" placeholder="..." />
+                <marker date="1447356005667" expanded="true" signature="409:458" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,30 +219,35 @@
         <option value="$PROJECT_DIR$/views/bands/add_form.jade" />
         <option value="$PROJECT_DIR$/views/bands/bands_admin.txt" />
         <option value="$PROJECT_DIR$/views/bands/band_admin.jade" />
-        <option value="$PROJECT_DIR$/approutes.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/views/bands/band.jade" />
-        <option value="$PROJECT_DIR$/controllers/bands.js" />
         <option value="$PROJECT_DIR$/public/javascripts/common.js" />
         <option value="$PROJECT_DIR$/models/records.js" />
-        <option value="$PROJECT_DIR$/views/records/edit_form.jade" />
-        <option value="$PROJECT_DIR$/controllers/records.js" />
-        <option value="$PROJECT_DIR$/views/records/record.jade" />
         <option value="$PROJECT_DIR$/views/musicians/musician_list.jade" />
-        <option value="$PROJECT_DIR$/views/layout.jade" />
         <option value="$PROJECT_DIR$/public/stylesheets/styles.css" />
-        <option value="$PROJECT_DIR$/views/stylesheets/styles.less" />
         <option value="$PROJECT_DIR$/views/bands/band_list.jade" />
         <option value="$PROJECT_DIR$/routes/band.js" />
-        <option value="$PROJECT_DIR$/models/musicians.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/views/musicians/musicion_admin.jade" />
         <option value="$PROJECT_DIR$/views/musicians/musician_admin.jade" />
-        <option value="$PROJECT_DIR$/controllers/musicians.js" />
-        <option value="$PROJECT_DIR$/views/musicians/edit_form.jade" />
         <option value="$PROJECT_DIR$/public/javascripts/tinymce/tinymce/js/tinymce/tinymce.min.js" />
+        <option value="$PROJECT_DIR$/views/bands/band.jade" />
+        <option value="$PROJECT_DIR$/public/javascripts/tinymce/tinymce/js/tinymce/plugins/advimage/plugin.min.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/tinymce/tinymce/js/tinymce/plugins/advimage/plugin_src.js" />
+        <option value="$PROJECT_DIR$/views/records/record.jade" />
+        <option value="$PROJECT_DIR$/approutes.js" />
+        <option value="$PROJECT_DIR$/controllers/records.js" />
+        <option value="$PROJECT_DIR$/views/stylesheets/styles.less" />
+        <option value="$PROJECT_DIR$/views/musicians/edit_form.jade" />
+        <option value="$PROJECT_DIR$/models/musicians.js" />
+        <option value="$PROJECT_DIR$/controllers/musicians.js" />
+        <option value="$PROJECT_DIR$/views/musicians/musician.jade" />
+        <option value="$PROJECT_DIR$/views/layout.jade" />
+        <option value="$PROJECT_DIR$/views/bands/band_admin.txt" />
         <option value="$PROJECT_DIR$/views/bands/edit_form.jade" />
+        <option value="$PROJECT_DIR$/views/records/edit_form.jade" />
+        <option value="$PROJECT_DIR$/public/javascripts/records_edit.js" />
+        <option value="$PROJECT_DIR$/controllers/bands.js" />
       </list>
     </option>
   </component>
@@ -197,8 +261,7 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1374" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -224,7 +287,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -268,7 +330,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="records" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -282,7 +348,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -296,124 +362,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kakomey" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kakomey" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kakomey" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kakomey" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kakomey" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kakomey" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kakomey" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kakomey" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tinymce" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -505,29 +460,29 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="0" width="1374" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32650074" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2113402" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16134185" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32440946" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -575,35 +530,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/bands/band.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/approutes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/bands.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="41" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/bands/add_form.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/bands/band_list.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -643,7 +569,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1447689447183" expanded="true" signature="24:3306" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="500:3274" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="529:1276" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="549:1276" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="1284:3274" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="1304:1809" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="1819:2502" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="1842:2502" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="2512:3274" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="2560:3274" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -738,13 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/records.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="284" column="15" selection-start-line="283" selection-start-column="19" selection-end-line="284" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/bands/add_form.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29209623">
@@ -759,31 +689,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/records/record.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.84">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/musicians/musician_list.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.96">
           <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/bands/band.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.24">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/bands.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -794,24 +703,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/records.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="570.44">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="101496" selection-end-line="0" selection-end-column="101497" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/stylesheets/styles.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.372549">
-          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -826,15 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/approutes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -842,15 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/bands.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -858,19 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-          <folding>
-            <marker date="1420655463148" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1420655463148" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1420655463148" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/musicians.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -878,34 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="80" selection-start-line="10" selection-start-column="80" selection-end-line="10" selection-end-column="80" />
-          <folding>
-            <marker date="1445189014466" expanded="true" signature="24:703" placeholder="..." />
-            <marker date="1445189014466" expanded="true" signature="49:639" placeholder="..." />
-            <marker date="1445189014466" expanded="true" signature="643:703" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/musicians.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="122" column="24" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/musicians/edit_form.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
-          <folding>
-            <marker date="1445189253905" expanded="true" signature="24:1160" placeholder="..." />
-            <marker date="1445189253905" expanded="true" signature="38:1130" placeholder="..." />
-            <marker date="1445189253905" expanded="true" signature="50:666" placeholder="..." />
-            <marker date="1445189253905" expanded="true" signature="70:666" placeholder="..." />
-            <marker date="1445189253905" expanded="true" signature="674:1130" placeholder="..." />
-            <marker date="1445189253905" expanded="true" signature="694:1130" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -913,23 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/records/edit_form.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.44">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -937,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0925926">
           <caret line="0" column="3416" selection-start-line="0" selection-start-column="3414" selection-end-line="0" selection-end-column="3416" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,22 +763,210 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="671.87036">
           <caret line="8" column="21031" selection-start-line="8" selection-start-column="21027" selection-end-line="8" selection-end-column="21031" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/tinymce/tinymce/js/tinymce/plugins/advimage/plugin.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="791" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/tinymce/tinymce/js/tinymce/plugins/advimage/plugin_src.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/approutes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/tinymce/tinymce/js/tinymce/tinymce.min.js">
+    <entry file="file://$PROJECT_DIR$/views/stylesheets/styles.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="366.5">
-          <caret line="5" column="5718" selection-start-line="5" selection-start-column="5712" selection-end-line="5" selection-end-column="5718" />
+        <state vertical-scroll-proportion="-4.8875">
+          <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/musicians/edit_form.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.12">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/records.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/musicians.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/musicians.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.6">
+          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/musicians/musician.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.087628864">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/bands.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+          <folding>
+            <marker date="1447356005667" expanded="true" signature="17:458" placeholder="..." />
+            <marker date="1447356005667" expanded="true" signature="24:226" placeholder="..." />
+            <marker date="1447356005667" expanded="true" signature="234:458" placeholder="..." />
+            <marker date="1447356005667" expanded="true" signature="243:385" placeholder="..." />
+            <marker date="1447356005667" expanded="true" signature="258:342" placeholder="..." />
+            <marker date="1447356005667" expanded="true" signature="353:385" placeholder="..." />
+            <marker date="1447356005667" expanded="true" signature="394:458" placeholder="..." />
+            <marker date="1447356005667" expanded="true" signature="409:458" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/bands/band.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+          <folding>
+            <marker date="1446883903623" expanded="true" signature="24:1001" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="38:109" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="50:109" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="68:109" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="115:252" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="127:157" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="165:252" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="258:683" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="270:683" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="288:683" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="328:441" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="452:564" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="575:683" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="694:1001" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="802:1001" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="1005:1061" placeholder="..." />
+            <marker date="1446883903623" expanded="true" signature="1069:1204" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/bands/band_admin.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="192" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="314" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/records/record.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+          <folding>
+            <marker date="1446982886728" expanded="true" signature="24:1327" placeholder="..." />
+            <marker date="1446982886728" expanded="true" signature="37:100" placeholder="..." />
+            <marker date="1446982886728" expanded="true" signature="106:526" placeholder="..." />
+            <marker date="1446982886728" expanded="true" signature="118:526" placeholder="..." />
+            <marker date="1446982886728" expanded="true" signature="136:526" placeholder="..." />
+            <marker date="1446982886728" expanded="true" signature="176:285" placeholder="..." />
+            <marker date="1446982886728" expanded="true" signature="296:407" placeholder="..." />
+            <marker date="1446982886728" expanded="true" signature="418:526" placeholder="..." />
+            <marker date="1446982886728" expanded="true" signature="537:1322" placeholder="..." />
+            <marker date="1446982886728" expanded="true" signature="561:746" placeholder="..." />
+            <marker date="1446982886728" expanded="true" signature="754:995" placeholder="..." />
+            <marker date="1446982886728" expanded="true" signature="1003:1322" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/bands/edit_form.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06822262">
-          <caret line="4" column="110" selection-start-line="4" selection-start-column="110" selection-end-line="4" selection-end-column="110" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+          <folding>
+            <marker date="1447532132241" expanded="true" signature="24:2733" placeholder="..." />
+            <marker date="1447532132241" expanded="true" signature="375:2707" placeholder="..." />
+            <marker date="1447532132241" expanded="true" signature="387:1082" placeholder="..." />
+            <marker date="1447532132241" expanded="true" signature="407:1082" placeholder="..." />
+            <marker date="1447532132241" expanded="true" signature="1090:2707" placeholder="..." />
+            <marker date="1447532132241" expanded="true" signature="1110:1516" placeholder="..." />
+            <marker date="1447532132241" expanded="true" signature="1527:2000" placeholder="..." />
+            <marker date="1447532132241" expanded="true" signature="2011:2707" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/records/edit_form.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
+          <folding>
+            <marker date="1447689447183" expanded="true" signature="24:3306" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="500:3274" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="529:1276" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="549:1276" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="1284:3274" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="1304:1809" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="1819:2502" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="1842:2502" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="2512:3274" placeholder="..." />
+            <marker date="1447689447183" expanded="true" signature="2560:3274" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/records_edit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/records.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/bands.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19587629">
+          <caret line="153" column="29" selection-start-line="153" selection-start-column="29" selection-end-line="153" selection-end-column="29" />
           <folding />
         </state>
       </provider>

@@ -2,8 +2,7 @@
 
 block content
   script(src='/javascripts/tinymce/tinymce/js/tinymce/tinymce.min.js')
-  script tinymce.init({selector:'textarea', plugins: 'advlist autolink link image lists charmap print preview'});
-
+  script tinymce.init({ selector: '.edited',plugins: 'advlist autolink link image lists charmap print preview imagetools advimage',toolbar: 'undo redo | styleselect | bold italic | link image | advimage',imagetools_toolbar: 'rotateleft rotateright | flipv fliph'});
   div.row
     div.col-md-6
       form(method='POST'  action='/admin/bands/edit/' enctype="multipart/form-data")
@@ -24,7 +23,7 @@ block content
         br
         b История
         br
-        textarea.form-control(name ='history', row=20)=band.history
+        textarea.form-control.edited(name ='history', row=20)=band.history
         br
         input.btn.btn-success(type='submit')
     div.col-md-4

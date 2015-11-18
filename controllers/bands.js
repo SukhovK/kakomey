@@ -149,7 +149,7 @@ exports.edit = function(req, res){
   BandModel.update({bid:bid}, updateBand, function(err,data){
   	    if (!err) {
             console.log("Данные сохранены");
-			res.redirect('/bands/');			
+			res.redirect('/admin/bands/edit/'+bid);
         } else {
 		    console.log(err);
 		}
@@ -166,7 +166,7 @@ exports.setPic = function(req, res){
 	BandModel.update({bid:bid}, updateBand, function(err,data){
   	    if (!err) {
             console.log("Данные сохранены");
-	        res.redirect('/bands/');			
+	        res.redirect('/admin/bands/edit/'+bid);
         } else {
 		    console.log(err);
         }

@@ -21,7 +21,7 @@ exports.route = function(app, controller) {
 	// records
 	if(controller == 'records'){
 	    app.put('/admin/records/addSong', controllerObject.addSong);
-		app.get('/admin/records/deleteSongr/:sid/:rid', controllerObject.deleteSong);
+		app.get('/admin/records/deleteSong/:rid/:sid', controllerObject.deleteSong);
 		app.put('/admin/records/addMember', controllerObject.addMember);
 		app.get('/admin/records/deleteMember/:aid/:rid', controllerObject.deleteMember);
 	}

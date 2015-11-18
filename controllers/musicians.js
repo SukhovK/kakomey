@@ -26,7 +26,7 @@ exports.show = function(req, res) {
     var id = req.params.mid;
     MusicianModel.find({mid:id},function (err, musician) {
 	    if (!err) {
-            res.render('musicians/musician', {title:'Bands',musician: musician[0]});
+            res.render('musicians/musician', {title:'Bands', musician: musician[0]});
         } else {
 		    console.log(err);
 		}
@@ -106,12 +106,13 @@ exports.edit = function(req, res){
   var updateMusician = {
       aid: aid,
       name: req.body.name,
-	  sortName: req.body.sortName
+	  sortName: req.body.sortName,
+	  bio: req.body.history
   };
   MusicianModel.update({aid:aid}, updateMusician, function(err,data){
   	    if (!err) {
             console.log("Данные сохранены");
-			res.redirect('/musicians/');			
+			res.redirect('/admin/musicians/edit/72');
         } else {
 		    console.log(err);
 		}
@@ -120,7 +121,9 @@ exports.edit = function(req, res){
 exports.setPic = function(req, res){
     var aid = req.body.aid;
     var src = req.files.main_pic.path;
-    fs.renameSync(src, "/images/musicians/"+aid+req.files.main_pic.name);
+	console.log(aid);
+	console.log(src);
+    fs.renameSync(src, "public/images/musicians/"+aid+req.files.main_pic.name);
 	var updateMusician = {
       aid: aid,
 	  mainPict: aid+req.files.main_pic.name

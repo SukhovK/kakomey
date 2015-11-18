@@ -31,5 +31,5 @@ block content
     div.col-md-7.tab-pane.fade(role="tabpanel"  id="mem")
       each m in band.members
         li
-          a(href='/bands/')=m.name
+          a(href='/musicians/'+m.aid)=m.name
 

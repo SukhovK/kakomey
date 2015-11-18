@@ -227,7 +227,31 @@ exports.addSong  = function(req, res){
   });	
 }
 exports.deleteSong  = function(req, res){
+	//console.log("delete");
+	var sid = req.params.sid;
+	var rid = req.params.rid;
+	RecordModel.find({rid:rid},function(err,record) {
+		console.log(record);
+		var songs = record[0].songs;
+		for (j = 0; j < songs.length; j++) {
+			if (songs[j].order == sid) {
+				songs.splice(j, 1);
+			}
+		//	console.log(songs[j].order+" "+sid);
+		}
 
+		updateRecord = {
+			songs : songs
+		}
+		RecordModel.update({rid:rid}, updateRecord, function(err,data){
+			if (!err) {
+				res.redirect('/admin/records/edit/'+rid);
+			} else {
+				console.log(err);
+			}
+		});
+	});
+	// res.redirect('/admin/records/edit/'+rid);
 }
 exports.addMember  = function(req, res){
 	var rid = req.body.rid;
@@ -300,6 +324,7 @@ exports.deleteMember  = function(req, res){
 		for (j = 0; j < members.length; j++) {
 			if (members[j].aid == aid) {
 				members.splice(j, 1);
+				// console.log(members[j].aid+" "+aid);
 			}
 		}
 		updateRecord = {

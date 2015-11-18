@@ -1,7 +1,11 @@
 ﻿extends ../layout
 
 block content
-  div.row
+  script(src='/javascripts/tinymce/tinymce/js/tinymce/tinymce.min.js')
+  script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js')
+  script tinymce.init({selector: 'textarea',plugins: 'advlist autolink link image lists charmap print preview imagetools advimage',toolbar: 'undo redo | styleselect | bold italic | link image | advimage',imagetools_toolbar: 'rotateleft rotateright | flipv fliph'});
+  script(src='/javascripts/records_edit.js')
+  div.row(ng-app="record")
     div.col-md-6
       form(method='POST'  action='/admin/records/edit/' enctype="multipart/form-data")
         input(type='hidden' name ='_method' value='put')
@@ -39,31 +43,35 @@ block content
         input(type='file' name ='cover')=members
         br
         input.btn.btn-info(type='submit')
-      form(method='POST'  action='/admin/records/addSong')
-        input(type='hidden' name ='_method' value='put')
-        input(type='hidden' name ='rid' value=record.rid)
-        br
-        each s in record.songs
-          li.form-control=s.order+" "+s.title+" "+s.time
-            a(href='/admin/records/deleteSong/'+record.rid+'/' + s.order)
-              i.glyphicon.glyphicon-remove.mint
-              div.row
-        input.input-small(type='text' size=2 name='order' value=countSongs)
-        input(type='text', name='title')
-        input.input-small(type='text' size=5 name='time')
-        input.btn.btn-info(type='submit')
-      form(method='POST'  action='/admin/records/addMember')
-        input(type='hidden' name ='_method' value='put')
-        input(type='hidden' name ='rid' value=record.rid)
-        br
-        each m in record.members
-          li.form-control=m.name
-            a.right(href='/admin/records/deleteMember/' + m.aid+"/"+record.rid)
-              i.glyphicon.glyphicon-remove.mint
-              div.row
-        input(type='text', name='name')
-        input.input-small(type='text' size=5 name='role')
-        input(type='checkbox', name='main')
-        br
-        input.btn.btn-info(type='submit')
+      div.container
+        form(method='POST'  action='/admin/records/addSong')
+          input(type='hidden' name ='_method' value='put')
+          input(type='hidden' name ='rid' value=record.rid)
+          br
+          each s in record.songs
+            li.form-control=s.order+" "+s.title+" "+s.time
+              a(href='/admin/records/deleteSong/'+record.rid+'/' + s.order)
+                i.glyphicon.glyphicon-remove.mint
+                div.row
+          input.input-small(type='text' size=2 name='order' value=countSongs)
+          input(type='text', name='title')
+          input.input-small(type='text' size=5 name='time')
+          br
+          input.btn.btn-info(type='submit')
+      div.container(ng-controller="Members")
+        form(method='POST'  action='/admin/records/addMember')
+          input(type='hidden' name ='_method' value='put')
+          input(type='hidden' name ='rid' value=record.rid)
+          br
+          each m in record.members
+            li.form-control=m.name
+              a.right(href='/admin/records/deleteMember/' + m.aid+"/"+record.rid)
+                i.glyphicon.glyphicon-remove.mint
+                div.row
+          input(type='text', name='name', ng-model="membername")
+          input.input-small(type='text' size=5 name='role')
+          div {{membername}}
+          input(type='checkbox', name='main')
+          br
+          input.btn.btn-info(value="Add",ng-click="send()", ng-disabled="!hasValidLength()")
   a(href='/admin/bands/') Назад
