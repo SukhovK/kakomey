@@ -58,7 +58,7 @@ block content
           input.input-small(type='text' size=5 name='time')
           br
           input.btn.btn-info(type='submit')
-      div.container(ng-controller="Members")
+      div.container
         form(method='POST'  action='/admin/records/addMember')
           input(type='hidden' name ='_method' value='put')
           input(type='hidden' name ='rid' value=record.rid)
@@ -70,8 +70,8 @@ block content
                 div.row
           input(type='text', name='name', ng-model="membername")
           input.input-small(type='text' size=5 name='role')
-          div {{membername}}
+          br
           input(type='checkbox', name='main')
           br
-          input.btn.btn-info(value="Add",ng-click="send()", ng-disabled="!hasValidLength()")
+          input.btn.btn-info(type='submit', value="Add")
   a(href='/admin/bands/') Назад

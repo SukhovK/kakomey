@@ -26,7 +26,7 @@ block content
       img.rfloat.img-rounded(src="/images/covers/"+record.group.bid+"/"+record.cover, width="180px")
       each m in record.members
         li
-          a(href='musicians/'+m.aid)
+          a(href='/musicians/'+m.aid)
             if m.main
               b=m.name
             else

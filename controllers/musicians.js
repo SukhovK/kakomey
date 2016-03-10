@@ -23,9 +23,10 @@ exports.adminIndex  = function(req, res) {
 };
 // вывод информации о музыканте
 exports.show = function(req, res) {
-    var id = req.params.mid;
-    MusicianModel.find({mid:id},function (err, musician) {
+    var id = req.params.id;
+    MusicianModel.find({aid:id},function (err, musician) {
 	    if (!err) {
+			console.log(musician);
             res.render('musicians/musician', {title:'Bands', musician: musician[0]});
         } else {
 		    console.log(err);

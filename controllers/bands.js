@@ -3,7 +3,7 @@ var fs = require('fs');
 var async = require('async');
 // var fs = require('fs');
 exports.index = function(req, res) {
-   BandModel.find({},function (err, bands) {
+   BandModel.find({visible:1},function (err, bands) {
     if (!err) {
             res.render('bands/band_list', {title:'Bands',bandsList: bands});
         } else {
@@ -33,9 +33,6 @@ exports.show = function(req, res) {
 			var RecordModel    = require('../models/records').RecordModel;
 			//////////////////////////////////////////////////
 			RecordModel.find({"group.name":band[0].name},function (err, records) {
-              //  console.log(band[0].name);
-              //  console.log(band[0].bid);
-			//	console.log(records);
 				var covers = [];
 				records.forEach(function(item){
 					var cover =    item.cover					
@@ -256,7 +253,7 @@ exports.deleteMember  = function(req, res){
       BandModel.update({bid:bid}, updateBand, function(err,data){
   	    if (!err) {		
 				console.log("Данные сохранены");
-				res.redirect('/bands/edit/'+bid);			
+				res.redirect('/admin/bands/edit/'+bid);
 			} else {
 				console.log(err);
 			} 
@@ -324,7 +321,39 @@ exports.deleteRecord  = function(req, res){
 				res.redirect('/admin/bands/edit/'+bid);			
 			} else {
 				console.log(err);
-			} 
-		});  
+			}
+		});
 	});	
+}
+exports.check = function(req, res){
+	var bid = req.params.bid;
+	BandModel.find({bid:bid},function(err,band){
+		updateBand = {
+			visible : 1
+		}
+		BandModel.update({bid:bid}, updateBand, function(err,data){
+			if (!err) {
+				console.log("Данные сохранены");
+				res.redirect('/admin/bands/');
+			} else {
+				console.log(err);
+			}
+		});
+	});
+}
+exports.uncheck = function(req, res){
+	var bid = req.params.bid;
+	BandModel.find({bid:bid},function(err,band){
+		updateBand = {
+			visible : 0
+		}
+		BandModel.update({bid:bid}, updateBand, function(err,data){
+			if (!err) {
+				console.log("Данные сохранены");
+				res.redirect('/admin/bands/');
+			} else {
+				console.log(err);
+			}
+		});
+	});
 }

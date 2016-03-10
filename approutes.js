@@ -16,6 +16,7 @@ exports.route = function(app, controller) {
 	app.del('/admin/'+controller + '/del', controllerObject.delete);
 		
 	app.get('/admin/'+controller + '/edit/:id', login.ensureAuthenticated, controllerObject.editForm);
+
 	app.put('/admin/'+controller + '/edit', controllerObject.edit);
 	app.put('/admin/'+controller + '/setPic', controllerObject.setPic);
 	// records
@@ -31,5 +32,7 @@ exports.route = function(app, controller) {
 	    app.get('/admin/bands/deleteMember/:aid/:bid', controllerObject.deleteMember);
 	    app.put('/admin/bands/addRecord', controllerObject.addRecord);
 	    app.get('/admin/bands/deleteRecord/:rid/:bid', controllerObject.deleteRecord);
+		app.get('/admin/bands/check/:bid', login.ensureAuthenticated, controllerObject.check);
+		app.get('/admin/bands/uncheck/:bid', login.ensureAuthenticated, controllerObject.uncheck);
 	}
 };

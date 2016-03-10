@@ -237,7 +237,10 @@ exports.deleteSong  = function(req, res){
 			if (songs[j].order == sid) {
 				songs.splice(j, 1);
 			}
-		//	console.log(songs[j].order+" "+sid);
+			if (songs[j].order == null) {
+				songs.splice(j, 1);
+			}
+			// console.log(songs[j].order+" "+sid);
 		}
 
 		updateRecord = {

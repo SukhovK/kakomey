@@ -2,7 +2,7 @@
 
 block content
   script(src='/javascripts/tinymce/tinymce/js/tinymce/tinymce.min.js')
-  script tinymce.init({ selector: '.edited',plugins: 'advlist autolink link image lists charmap print preview imagetools advimage',toolbar: 'undo redo | styleselect | bold italic | link image | advimage',imagetools_toolbar: 'rotateleft rotateright | flipv fliph'});
+  script tinymce.init({ selector: '.edited',plugins: 'advlist autolink link image lists charmap print preview imagetools advimage',toolbar: 'undo redo | styleselect removeformat| bold italic | link unlink cleanup image | advimage',imagetools_toolbar: 'rotateleft rotateright | flipv fliph'});
   div.row
     div.col-md-6
       form(method='POST'  action='/admin/bands/edit/' enctype="multipart/form-data")

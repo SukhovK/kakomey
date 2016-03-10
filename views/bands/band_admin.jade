@@ -11,13 +11,21 @@ block content
             a(href='/bands/'+bandsList[b].bid)
               i.glyphicon.glyphicon-music &nbsp;
               =bandsList[b].name
-          div.col-md-1
+          div.col-md-2
             a(href='/admin/bands/edit/'+bandsList[b].bid)
               i.glyphicon.glyphicon-edit
               &nbsp;
               &nbsp;
             a(href='/admin/bands/del/'+bandsList[b].bid)
               i.glyphicon.glyphicon-remove.mint
+              &nbsp;
+              &nbsp;
+            if bandsList[b].visible==1
+              a(href='/admin/bands/uncheck/' + bandsList[b].bid)
+                i.glyphicon.glyphicon-ok
+            else
+              a(href='/admin/bands/check/' + bandsList[b].bid)
+                i.glyphicon.glyphicon-unchecked
           
   a(href='/admin/bands/add/')
     i.glyphicon.glyphicon-plus

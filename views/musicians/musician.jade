@@ -2,7 +2,9 @@
 
 block content
   h2  #{musician.name}!
-  div.row
-    div.col-md-7 
-      img.rfloat.img-rounded(src="/images/persons/"+musician.mainPict, width="180px")
-      |#{musician.bio}
+div.row
+  div.col-md-4
+    | #{band.bio}
+  div.col-md-3
+    img.img-rounded.shad(src="/images/persons/" + band.mainPict, width="330px")
+div.row

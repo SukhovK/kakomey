@@ -62,7 +62,7 @@ app.get('/', function(req, res) {
    console.log("stop45");
    var BandModel    = require('./models/bands').BandModel;
     console.log(BandModel);
-      BandModel.find({},function (err, bands) {
+      BandModel.find({visible:1},function (err, bands) {
 		if (!err) {
 			bands=snifle(bands);
             console.log("stop4");
