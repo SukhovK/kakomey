@@ -35,6 +35,7 @@ app.configure(function(){
 	}));  
     app.use(passport.initialize());
     app.use(passport.session());
+    app.use(express.urlencoded());
     app.use(app.router);
     app.use(lessMiddleware(__dirname + '/views', {
        dest: __dirname + '/public'
@@ -50,7 +51,8 @@ app.use(function(req, res, next){
 
 app.use(function(err, req, res, next) {
   if(err){
-    res.send(err.message);
+   //   console.log(req);
+      console.log(err.message+" pise");
   }
 });
 

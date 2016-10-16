@@ -3,7 +3,7 @@ exports.route = function(app, controller) {
   //  prefix = '/' + prefix;
   
     var controllerObject = require('./controllers/' + controller);
-	//console.log('/'+controller);
+	console.log('/'+controller);
 	//console.log(controllerObject.addForm);
 	app.get('/admin/'+controller + '/add', controllerObject.addForm);
 	app.post('/admin/'+controller + '/add', controllerObject.create);
@@ -28,6 +28,7 @@ exports.route = function(app, controller) {
 	}
     // bands
 	if(controller == 'bands'){
+		app.post('/admin/bands/edit', controllerObject.edit);
 	    app.put('/admin/bands/addMember', controllerObject.addMember);
 	    app.get('/admin/bands/deleteMember/:aid/:bid', controllerObject.deleteMember);
 	    app.put('/admin/bands/addRecord', controllerObject.addRecord);

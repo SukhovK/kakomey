@@ -118,7 +118,7 @@ exports.editForm = function(req, res){
 				}
 		    }
 			var albums=[];
-			console.log(group.albums);
+		//	console.log(group.albums);
 
 		    res.render('bands/edit_form',
 			          {band: group, 
@@ -130,6 +130,7 @@ exports.editForm = function(req, res){
 }
 // сохранение
 exports.edit = function(req, res){
+	console.log('control0');
   var bid = req.body.bid;
   var bandMembers = [];
  
@@ -142,11 +143,12 @@ exports.edit = function(req, res){
 	  short: req.body.short,
 	  history: req.body.history
   };
-  
+  console.log('control2');
   BandModel.update({bid:bid}, updateBand, function(err,data){
+	  console.log('contro2');
   	    if (!err) {
             console.log("Данные сохранены");
-			res.redirect('/admin/bands/edit/'+bid);
+		//	res.redirect('/admin/bands/edit/'+bid);
         } else {
 		    console.log(err);
 		}
