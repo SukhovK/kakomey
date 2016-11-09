@@ -18,7 +18,8 @@
     "passport": "*",
     "passport-local": "*",
     "express-session": "*",
-    "connect-mongodb": "^1.1.5"
+    "connect-mongodb": "^1.1.5",
+	 "connect-flash": "^0.1.1"
   },
   "devDependencies": {
     "less": "^1.7.5",
