@@ -130,29 +130,28 @@ exports.editForm = function(req, res){
 }
 // сохранение
 exports.edit = function(req, res){
-	console.log('control0');
-  var bid = req.body.bid;
-  var bandMembers = [];
- 
-  
-   console.log('control1');
-  var updateBand = {
-      bid: bid,
-      name: req.body.name,
-	  state: req.body.state,
-	  short: req.body.short,
-	  history: req.body.history
-  };
-  console.log('control2');
-  BandModel.update({bid:bid}, updateBand, function(err,data){
-	  console.log('contro2');
-  	    if (!err) {
-            console.log("Данные сохранены");
-		//	res.redirect('/admin/bands/edit/'+bid);
-        } else {
-		    console.log(err);
+	console.log(req.body);
+	var bid = req.body.bid;
+	var bandMembers = [];
+
+
+	console.log('control1');
+	var updateBand = {
+		bid: bid,
+		name: req.body.name,
+		state: req.body.state,
+		short: req.body.short,
+		history: req.body.history
+	};
+
+	BandModel.update({bid:bid}, updateBand, function(err,data){
+		if (!err) {
+			console.log("Данные сохранены");
+			res.redirect('/admin/bands/edit/'+bid);
+		} else {
+			console.log(err);
 		}
-  }); 
+	});
 }
 exports.setPic = function(req, res){
     var bid = req.body.bid;
