@@ -5,8 +5,7 @@ block content
   script tinymce.init({ selector: '.edited',plugins: 'advlist autolink link image lists charmap print preview imagetools advimage',toolbar: 'undo redo | styleselect removeformat| bold italic | link unlink cleanup image | advimage',imagetools_toolbar: 'rotateleft rotateright | flipv fliph'});
   div.row
     div.col-md-6
-      form(method='POST'  action='/admin/bands/edit?_method=PUT' enctype="multipart/form-data")
-        input(type='hidden' name ='_method' value='put')
+      form(method='POST'  action='/admin/bands/edit')
         input(type='hidden' name ='bid' value=band.bid)
         br
         b Название
@@ -28,7 +27,6 @@ block content
         input.btn.btn-success(type='submit')
     div.col-md-4
       form.control-group(method='POST'  action='/admin/bands/setPic/' enctype="multipart/form-data")
-        input(type='hidden' name ='_method' value='put')
         input(type='hidden' name ='bid' value=band.bid)
         br
         b Фото
@@ -38,8 +36,7 @@ block content
         input(type='file' name ='main_pic')=members
         br
         input(type='submit')
-      form(method='POST'  action='/admin/bands/addMember/' enctype="multipart/form-data")
-        input(type='hidden' name ='_method' value='put')
+      form(method='POST'  action='/admin/bands/addMember/')
         input(type='hidden' name ='bid' value=band.bid)
         br
         each m in band.members
@@ -49,7 +46,7 @@ block content
         input(type='text', name='name' size=26)
         br
         input(type='submit')
-      form(method='POST'  action='/admin/bands/addRecord/' enctype="multipart/form-data")
+      form(method='POST'  action='/admin/bands/addRecord/')
         input(type='hidden' name ='_method' value='put')
         input(type='hidden' name ='bid' value=band.bid)
         br

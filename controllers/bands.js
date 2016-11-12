@@ -130,6 +130,7 @@ exports.editForm = function(req, res){
 }
 // сохранение
 exports.edit = function(req, res){
+	console.log('edit');
 	console.log(req.body);
 	var bid = req.body.bid;
 	var bandMembers = [];
@@ -171,11 +172,10 @@ exports.setPic = function(req, res){
     });	
 }
 exports.addMember  = function(req, res){
-
+console.log("treck");
 	var MusicianModel    = require('../models/musicians').MusicianModel;
     var bid = req.body.bid;
     var name = req.body.name;
-
 	async.waterfall([
 		function (callback){
 			BandModel.find({bid:bid},function(err,band) {
@@ -183,6 +183,7 @@ exports.addMember  = function(req, res){
 			});
 		},
 		function (band, callback){
+			
 			var MusicianModel    = require('../models/musicians').MusicianModel;
 			MusicianModel.find({'name': name}, function(err, person) {
 				callback(null,band, person, MusicianModel);

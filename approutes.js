@@ -17,21 +17,25 @@ exports.route = function(app, controller) {
 		
 	app.get('/admin/'+controller + '/edit/:id', login.ensureAuthenticated, controllerObject.editForm);
 
-	app.put('/admin/'+controller + '/edit', controllerObject.edit);
-	app.put('/admin/'+controller + '/setPic', controllerObject.setPic);
+	app.post('/admin/'+controller + '/edit', controllerObject.edit);
+	app.post('/admin/'+controller + '/setPic', controllerObject.setPic);
 	// records
 	if(controller == 'records'){
 	    app.put('/admin/records/addSong', controllerObject.addSong);
 		app.get('/admin/records/deleteSong/:rid/:sid', controllerObject.deleteSong);
-		app.put('/admin/records/addMember', controllerObject.addMember);
+		app.post('/admin/records/addMember', controllerObject.addMember);
 		app.get('/admin/records/deleteMember/:aid/:rid', controllerObject.deleteMember);
 	}
     // bands
 	if(controller == 'bands'){
+		//app.post('/admin/bands/addMember', function(req, res){
+		//	console.log(req);
+		//});
+		app.post('/admin/bands/addMember', controllerObject.addMember);
 	//	app.put('/admin/bands/edit', controllerObject.edit);
-	    app.put('/admin/bands/addMember', controllerObject.addMember);
+	    app.post('/admin/bands/addMember', controllerObject.addMember);
 	    app.get('/admin/bands/deleteMember/:aid/:bid', controllerObject.deleteMember);
-	    app.put('/admin/bands/addRecord', controllerObject.addRecord);
+	    app.post('/admin/bands/addRecord', controllerObject.addRecord);
 	    app.get('/admin/bands/deleteRecord/:rid/:bid', controllerObject.deleteRecord);
 		app.get('/admin/bands/check/:bid', login.ensureAuthenticated, controllerObject.check);
 		app.get('/admin/bands/uncheck/:bid', login.ensureAuthenticated, controllerObject.uncheck);
