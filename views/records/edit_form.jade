@@ -32,7 +32,7 @@ block content
         input.btn.btn-success(type='submit')
     div.col-md-4
       form.control-group(method='POST'  action='/admin/records/setPic/' enctype="multipart/form-data")
-        input(type='hidden' name ='_method' value='put')
+       
         input(type='hidden' name ='rid' value=record.rid)
         input(type='hidden' name ='bid' value=record.group.bid)
         br

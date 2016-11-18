@@ -265,6 +265,8 @@ exports.deleteMember  = function(req, res){
 exports.addRecord  = function(req, res){
 	var RecordModel    = require('../models/records').RecordModel;
     var bid = req.body.bid;
+    console.log(bid);
+
 	BandModel.find({bid:bid},function(err,band){
 	    RecordModel.find().sort({rid: -1}).findOne(function (err, record) {
 	        if (!err) {	

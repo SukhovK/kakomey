@@ -14,6 +14,7 @@ var async = require('async');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
+var formidable = require('formidable' );
 // var favicon = require('favicon');
 var favicon = require('serve-favicon');
 var parseurl = require('parseurl');

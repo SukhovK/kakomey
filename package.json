@@ -6,20 +6,21 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "*",
-    "connect": "*",
-    "jade": "*",
     "async": "*",
-    "mongoose": "*",
-    "stylus": "*",
+    "connect": "*",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb": "^1.1.5",
+    "express": "*",
+    "express-session": "*",
+    "formidable": "^1.0.17",
+    "imagemagick": "^0.1.3",
+    "jade": "*",
     "less": "^1.7.5",
     "less-middleware": "^1.0.4",
-    "imagemagick": "^0.1.3",
+    "mongoose": "*",
     "passport": "*",
     "passport-local": "*",
-    "express-session": "*",
-    "connect-mongodb": "^1.1.5",
-	 "connect-flash": "^0.1.1"
+    "stylus": "*"
   },
   "devDependencies": {
     "less": "^1.7.5",

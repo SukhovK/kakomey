@@ -1,6 +1,7 @@
 ﻿var RecordModel    = require('../models/records').RecordModel;
 var async = require('async');
 var fs = require('fs');
+var formidable = require('formidable' );
 exports.index = function(req, res) {
    RecordModel.find({},function (err, records) {
 	    if (!err) {
@@ -10,6 +11,7 @@ exports.index = function(req, res) {
 		}
 	});
 };
+
 exports.adminIndex  = function(req, res) {
 console.log("yes");
     RecordModel.find({},function (err, records) {
@@ -99,23 +101,26 @@ exports.editForm = function(req, res){
     RecordModel.find({rid:rid},function (err, record) {
 	    if (!err) {
             var record = record[0];
-	     //   if(!fs.existsSync('public/images/covers/'+rid+'R'+record.cover)){
-		//        record.cover = 'disc.jpg';
-		 //   }
+	    
             var countSongs = record.songs.lenght;
 		    var persons=[];
 		    for(i=0; i < record.members.length; i++){
 			    persons.push(record.members[i].name);
 		    }
+		    console.log("render");
 		    res.render('records/edit_form',
 			    {   record: record, 
 					members: persons.join(','),
 					countSongs: countSongs
 				});
+		    res.status(200);
+		    console.log("render3");
         } else {
 		    console.log(err);
 	    }
+	  // console.log("render2");
 	});  
+	// console.log("render4");
 }
 // сохранение
 exports.edit = function(req, res){
@@ -142,19 +147,28 @@ exports.edit = function(req, res){
 
 exports.setPic = function(req, res){
 
-    var rid = req.body.rid;
-    var src = req.files.cover.path;
-	var bid = req.body.bid;
+        var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files){
+if(err) return res.redirect(303, '/error' );
+console.log('received fields:' );
+console.log(fields);
+console.log('recleived files:' );
+console.log(files.cover.name);
+    var src = files.cover.path;
+	var bid = fields.bid;
+	var rid = fields.rid;
+
     var mainDir = "public/images/covers/"+bid+"/";
     if(!fs.existsSync(mainDir)) {
         fs.mkdirSync(mainDir);
         fs.mkdirSync(mainDir+"tumbs/");
     }
-	var path = mainDir+req.files.cover.name;;
-	var tumb = mainDir+"tumbs/"+req.files.cover.name;
+    var path = mainDir+files.cover.name;;
+	var tumb = mainDir+"tumbs/"+files.cover.name;
+	//console.log(src);
+//	console.log(path);
     fs.renameSync(src, path);
-
-	var imagic = require('imagemagick');
+    	var imagic = require('imagemagick');
 	//Ресайзим TODO - to RecordModel.update
     imagic.resize({ srcPath: path, dstPath:tumb, width: 100, filter: 'Point' },
 				function(err, stdout, stderr){
@@ -190,8 +204,9 @@ exports.setPic = function(req, res){
 				});
 	var updateRecord = {
 		rid: rid,
-		cover: req.files.cover.name
-	};	
+		cover: files.cover.name
+	};
+
 	RecordModel.update({rid:rid}, updateRecord, function(err,data){
   	    if (!err) {
             console.log(updateRecord);
@@ -201,6 +216,8 @@ exports.setPic = function(req, res){
 		    console.log(err);
         }
     });
+//res.redirect(303, '/thank-you' );
+});
 	
 }
 exports.addSong  = function(req, res){
