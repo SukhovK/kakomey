@@ -124,6 +124,7 @@ exports.editForm = function(req, res){
 }
 // сохранение
 exports.edit = function(req, res){
+	console.log(req.body)
   var rid = req.body.rid;
 
   var updateRecord = {
@@ -147,13 +148,9 @@ exports.edit = function(req, res){
 
 exports.setPic = function(req, res){
 
-        var form = new formidable.IncomingForm();
-    form.parse(req, function(err, fields, files){
+var form = new formidable.IncomingForm();
+form.parse(req, function(err, fields, files){
 if(err) return res.redirect(303, '/error' );
-console.log('received fields:' );
-console.log(fields);
-console.log('recleived files:' );
-console.log(files.cover.name);
     var src = files.cover.path;
 	var bid = fields.bid;
 	var rid = fields.rid;
@@ -165,27 +162,24 @@ console.log(files.cover.name);
     }
     var path = mainDir+files.cover.name;;
 	var tumb = mainDir+"tumbs/"+files.cover.name;
-	//console.log(src);
-//	console.log(path);
     fs.renameSync(src, path);
-    	var imagic = require('imagemagick');
+    var imagic = require('imagemagick');
+    console.log("tumb "+tumb);
+    console.log("path "+path);
 	//Ресайзим TODO - to RecordModel.update
     imagic.resize({ srcPath: path, dstPath:tumb, width: 100, filter: 'Point' },
-				function(err, stdout, stderr){
-					if (err){
-                        console.log("oi");
-                        console.log(err);
-                    }
-					else {
-						var BandModel    = require('../models/bands').BandModel;
-						BandModel.find({bid:bid},function(err,band){
-						var albums = [];
-						band[0].albums.forEach(function(record){
-							
-							if(record.rid == rid){
-								console.log(record.title);
-								record.cover = tumb;
-							}
+		function(err, stdout, stderr){
+			if (err){
+                console.log("oi");
+                console.log(err);
+            } else {
+				var BandModel    = require('../models/bands').BandModel;
+				BandModel.find({bid:bid},function(err,band){
+				var albums = [];
+				band[0].albums.forEach(function(record){
+					if(record.rid == rid){
+						record.cover = tumb;
+					}
 							albums.push(record);
 						});
 						updateBand = {
@@ -216,10 +210,10 @@ console.log(files.cover.name);
 		    console.log(err);
         }
     });
-//res.redirect(303, '/thank-you' );
 });
 	
 }
+
 exports.addSong  = function(req, res){
     var rid = req.body.rid;
 	var newSong = {

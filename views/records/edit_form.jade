@@ -7,8 +7,7 @@ block content
   script(src='/javascripts/records_edit.js')
   div.row(ng-app="record")
     div.col-md-6
-      form(method='POST'  action='/admin/records/edit/' enctype="multipart/form-data")
-        input(type='hidden' name ='_method' value='put')
+      form(method='POST'  action='/admin/records/edit/')
         input(type='hidden' name ='rid' value=record.rid)
         br
         b Название
@@ -45,11 +44,10 @@ block content
         input.btn.btn-info(type='submit')
       div.container
         form(method='POST'  action='/admin/records/addSong')
-          input(type='hidden' name ='_method' value='put')
           input(type='hidden' name ='rid' value=record.rid)
           br
           each s in record.songs
-            li.form-control=s.order+" "+s.title+" "+s.time
+            li=s.order+" "+s.title+" "+s.time
               a(href='/admin/records/deleteSong/'+record.rid+'/' + s.order)
                 i.glyphicon.glyphicon-remove.mint
                 div.row
@@ -60,11 +58,10 @@ block content
           input.btn.btn-info(type='submit')
       div.container
         form(method='POST'  action='/admin/records/addMember')
-          input(type='hidden' name ='_method' value='put')
           input(type='hidden' name ='rid' value=record.rid)
           br
           each m in record.members
-            li.form-control=m.name
+            li=m.name
               a.right(href='/admin/records/deleteMember/' + m.aid+"/"+record.rid)
                 i.glyphicon.glyphicon-remove.mint
                 div.row

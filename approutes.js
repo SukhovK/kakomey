@@ -32,7 +32,6 @@ exports.route = function(app, controller) {
 		//	console.log(req);
 		//});
 		app.post('/admin/bands/addMember', controllerObject.addMember);
-	//	app.put('/admin/bands/edit', controllerObject.edit);
 	    app.post('/admin/bands/addMember', controllerObject.addMember);
 	    app.get('/admin/bands/deleteMember/:aid/:bid', controllerObject.deleteMember);
 	    app.post('/admin/bands/addRecord', controllerObject.addRecord);
