@@ -1,6 +1,7 @@
 ﻿var BandModel    = require('../models/bands').BandModel;
 var fs = require('fs');
 var async = require('async');
+var formidable = require('formidable' );
 // var fs = require('fs');
 exports.index = function(req, res) {
    BandModel.find({visible:1},function (err, bands) {
@@ -35,8 +36,8 @@ exports.show = function(req, res) {
 			RecordModel.find({"group.name":band[0].name},function (err, records) {
 				var covers = [];
 				records.forEach(function(item){
-					var cover =    item.cover					
-				    covers[item.rid] = cover;
+
+var formidable = require('formidable' );				    covers[item.rid] = cover;
 				  //  console.log(item);
                     console.log(item.cover);
 				});
@@ -68,7 +69,7 @@ exports.create = function(req, res) {
     Band.save(function(err,data){
   	    if (!err) {
             console.log("Данные сохранены");
-						res.redirect('/admin/bands/edit/');
+						res.redirect('/admin/bands/edit/'+bid);
         } else {
 		    console.log(err);
 		}
@@ -154,23 +155,31 @@ exports.edit = function(req, res){
 		}
 	});
 }
+
 exports.setPic = function(req, res){
-    var bid = req.body.bid;
-    var src = req.files.main_pic.path;
-    fs.renameSync(src, "public/images/main/"+bid+req.files.main_pic.name);
-	var updateBand = {
-      bid: bid,
-	  mainImage: bid+req.files.main_pic.name,
-    };
-	BandModel.update({bid:bid}, updateBand, function(err,data){
-  	    if (!err) {
-            console.log("Данные сохранены");
-	        res.redirect('/admin/bands/edit/'+bid);
-        } else {
-		    console.log(err);
-        }
-    });	
+	var form = new formidable.IncomingForm();
+	form.parse(req, function(err, fields, files){
+			if(err) return res.redirect(303, '/error' );
+			//console.log(files);
+    		var src = files.main_pic.path;
+			var bid = fields.bid;
+			var rid = fields.rid;
+			fs.renameSync(src, "public/images/main/"+bid+files.main_pic.name);
+			var updateBand = {
+     			bid: bid,
+	 			mainImage: bid+files.main_pic.name,
+    		};
+			BandModel.update({bid:bid}, updateBand, function(err,data){
+  	    		if (!err) {
+            		console.log("Данные сохранены");
+	       			res.redirect('/admin/bands/edit/'+bid);
+        		} else {
+		   	 		console.log(err);
+       	 		}
+    		});	
+	});	
 }
+
 exports.addMember  = function(req, res){
 console.log("treck");
 	var MusicianModel    = require('../models/musicians').MusicianModel;

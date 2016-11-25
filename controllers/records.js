@@ -164,8 +164,7 @@ if(err) return res.redirect(303, '/error' );
 	var tumb = mainDir+"tumbs/"+files.cover.name;
     fs.renameSync(src, path);
     var imagic = require('imagemagick');
-    console.log("tumb "+tumb);
-    console.log("path "+path);
+    
 	//Ресайзим TODO - to RecordModel.update
     imagic.resize({ srcPath: path, dstPath:tumb, width: 100, filter: 'Point' },
 		function(err, stdout, stderr){
