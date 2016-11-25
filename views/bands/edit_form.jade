@@ -53,8 +53,7 @@ block content
           li.form-control.title+" "+a.year
             a(href='/admin/bands/deleteRecord/'+a.rid+'/'+band.bid)
               i.glyphicon.glyphicon-remove.mint
-              &nbsp;
-            a(href='/admin/records/edit/64'+a.rid)
+            a(href='/admin/records/edit/'+a.rid)
               i.glyphicon.glyphicon-edit.mint
         input.lfloat(type='text' size=2 name='order' value=countSongs)
         input.lfloat(type='text', name='title' size=20)
