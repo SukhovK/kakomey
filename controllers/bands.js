@@ -36,8 +36,8 @@ exports.show = function(req, res) {
 			RecordModel.find({"group.name":band[0].name},function (err, records) {
 				var covers = [];
 				records.forEach(function(item){
-
-var formidable = require('formidable' );				    covers[item.rid] = cover;
+					var cover =    item.cover					
+				    covers[item.rid] = cover;
 				  //  console.log(item);
                     console.log(item.cover);
 				});
