@@ -50,7 +50,7 @@ block content
         input(type='hidden' name ='bid' value=band.bid)
         br
         each a in band.albums
-          li.form-control.title+" "+a.year
+          li.form-control=a.title+" "+a.year
             a(href='/admin/bands/deleteRecord/'+a.rid+'/'+band.bid)
               i.glyphicon.glyphicon-remove.mint
             a(href='/admin/records/edit/'+a.rid)
