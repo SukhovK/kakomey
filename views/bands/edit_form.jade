@@ -50,10 +50,11 @@ block content
         input(type='hidden' name ='bid' value=band.bid)
         br
         each a in band.albums
-          li.form-control=a.title+" "+a.year
+          li.form-control.title+" "+a.year
             a(href='/admin/bands/deleteRecord/'+a.rid+'/'+band.bid)
               i.glyphicon.glyphicon-remove.mint
-            a(href='/admin/bands/edit/'+a.rid)
+              &nbsp;
+            a(href='/admin/records/edit/64'+a.rid)
               i.glyphicon.glyphicon-edit.mint
         input.lfloat(type='text' size=2 name='order' value=countSongs)
         input.lfloat(type='text', name='title' size=20)
