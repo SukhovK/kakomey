@@ -53,7 +53,6 @@ exports.show = function(req, res) {
 }
 // вывод формы для добавления группы 
 exports.addForm = function(req, res) {
-   // console.log('/test!');
     res.render('bands/add_form');
 };
 // добавление новой группы 

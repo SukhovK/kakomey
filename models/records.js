@@ -10,12 +10,12 @@ var RecordSchema = new mongoose.Schema( {
 		lable: {type: String},
 		review: {type: String},
         members:[{aid: Number, name: String, main: Boolean, role:Array}],
-		songs:[{order: Number, title: String, time:String}]
+		songs:[{order: Number, title: String, time:String, autors:String}]
     });
 
 RecordSchema.statics.getLastUid = function (){
     var coll =this.find({}).sort({'uid': -1}).limit(1);
-	console.log(coll.bid);
+	//console.log(coll.bid);
 }
 var RecordModel =  db.model('Record', RecordSchema);
 module.exports.RecordModel = RecordModel;

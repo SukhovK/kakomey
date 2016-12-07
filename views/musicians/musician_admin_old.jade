@@ -1,0 +1,22 @@
+﻿extends ../layout
+
+block content
+  h3= title
+  ul.nav.nav-list
+    - for (var m in musiciansList)
+      li
+        div.row
+          div.col-md-8
+            a(href='/musicians/'+musiciansList[m].aid)
+              img.img-rounded(src="/images/musicians/"+musiciansList[m].mainPict, width="40px")
+              &nbsp;
+              =musiciansList[m].name
+          div.col-md-1
+            a(href='/admin/musicians/edit/'+musiciansList[m].aid)
+              i.glyphicon.glyphicon-edit
+              &nbsp;
+              &nbsp;
+            a(href='/admin/musicians/del/'+musiciansList[m].aid)
+              i.glyphicon.glyphicon-remove.mint
+  a(href='/admin/musicians/add')
+    i.glyphicon.glyphicon-plus
